@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProSync - AI Career Discovery</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #14213d;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 72px;
+            background: #ffffff;
+            border-bottom: 1px solid #e7ebf2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+            color: #14213d;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769ff;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .step {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* MAIN */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 45px auto 70px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769ff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 14px;
+            color: #14213d;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: auto;
+            color: #667085;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* AI CARD */
+        .ai-card {
+            background: linear-gradient(135deg, #eef5ff, #ffffff);
+            border: 1px solid #dbe7ff;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .ai-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 16px;
+            background: #1769ff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .ai-card h2 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .ai-card p {
+            color: #667085;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* SNAPSHOT */
+        .section-title {
+            margin-bottom: 16px;
+        }
+
+        .section-title h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #7b8494;
+            font-size: 14px;
+        }
+
+        .snapshot {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .profile-box {
+            background: white;
+            border: 1px solid #e5e9f0;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 5px 18px rgba(20, 33, 61, 0.04);
+        }
+
+        .profile-box h3 {
+            font-size: 15px;
+            margin-bottom: 14px;
+            color: #344054;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .chip {
+            padding: 8px 12px;
+            border-radius: 20px;
+            background: #f2f5f9;
+            color: #475467;
+            font-size: 13px;
+            border: 1px solid #e4e8ee;
+        }
+
+        .chip.blue {
+            background: #edf4ff;
+            color: #1769ff;
+            border-color: #d8e7ff;
+        }
+
+        /* GOALS */
+        .goal-box {
+            background: white;
+            border: 1px solid #e5e9f0;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 18px rgba(20, 33, 61, 0.04);
+        }
+
+        .goal-box p {
+            color: #667085;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta-card {
+            background: #14213d;
+            color: white;
+            border-radius: 20px;
+            padding: 34px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .cta-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .cta-card p {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 620px;
+            margin: auto;
+        }
+
+        .cta-btn {
+            margin-top: 22px;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 9px;
+            background: #1769ff;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .cta-btn:hover {
+            background: #0f56d8;
+            transform: translateY(-1px);
+        }
+
+        /* MODAL */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 20, 40, 0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .modal-box {
+            width: 90%;
+            max-width: 430px;
+            background: white;
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #1769ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .modal-box h3 {
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .modal-box p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .step {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .snapshot {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-card {
+                align-items: flex-start;
+            }
+
+            .cta-card {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="logo">P</div>
+            ProSync
+        </div>
+
+        <div class="step">
+            AI Career Discovery · Step 3 of 3
+        </div>
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <section class="hero">
+            <div class="eyebrow">🤖 AI Career Discovery</div>
+
+            <h1>Let ProSync understand your future possibilities.</h1>
+
+            <p>
+                ProSync looks at your interests, hobbies, strengths, goals and the
+                areas you explored to suggest career directions that you may want
+                to explore further.
+            </p>
+        </section>
+
+
+        <!-- AI EXPLANATION -->
+        <section class="ai-card">
+
+            <div class="ai-icon">🤖</div>
+
+            <div>
+                <h2>How ProSync AI works</h2>
+
+                <p>
+                    Your profile helps ProSync understand what you enjoy, what you are
+                    good at and what you want to explore. The AI uses these details to
+                    recommend possible career paths — not to decide your future for you.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE SNAPSHOT -->
+        <div class="section-title">
+            <h2>Your Profile Snapshot</h2>
+            <p>These are the areas ProSync will use for career discovery.</p>
+        </div>
+
+
+        <section class="snapshot">
+
+            <!-- INTERESTS -->
+            <div class="profile-box">
+                <h3>💡 Your Interests</h3>
+
+                <div class="chips">
+                    <span class="chip blue">Technology</span>
+                    <span class="chip blue">Science</span>
+                    <span class="chip blue">Design</span>
+                    <span class="chip blue">Business</span>
+                </div>
+            </div>
+
+
+            <!-- STRENGTHS -->
+            <div class="profile-box">
+                <h3>⭐ Your Strengths</h3>
+
+                <div class="chips">
+                    <span class="chip">Problem Solving</span>
+                    <span class="chip">Creativity</span>
+                    <span class="chip">Teamwork</span>
+                    <span class="chip">Communication</span>
+                </div>
+            </div>
+
+
+            <!-- HOBBIES -->
+            <div class="profile-box">
+                <h3>🎨 Your Hobbies</h3>
+
+                <div class="chips">
+                    <span class="chip">Reading</span>
+                    <span class="chip">Drawing</span>
+                    <span class="chip">Coding</span>
+                    <span class="chip">Music</span>
+                </div>
+            </div>
+
+
+            <!-- EXPLORED AREAS -->
+            <div class="profile-box">
+                <h3>🌎 Areas You Explored</h3>
+
+                <div class="chips">
+                    <span class="chip blue">Engineering</span>
+                    <span class="chip blue">Creative Careers</span>
+                    <span class="chip blue">Business Careers</span>
+                    <span class="chip blue">Science</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- GOAL -->
+        <div class="section-title">
+            <h2>🎯 Your Goals</h2>
+            <p>What you would like to achieve in the future.</p>
+        </div>
+
+        <div class="goal-box">
+
+            <p>
+                I want to understand different career options, learn useful skills,
+                explore opportunities and gradually prepare myself for a future career.
+            </p>
+
+        </div>
+
+
+        <!-- CTA -->
+        <section class="cta-card">
+
+            <h2>Ready to discover your possibilities?</h2>
+
+            <p>
+                ProSync will now generate career directions based on your profile,
+                interests, strengths and exploration journey.
+            </p>
+
+            <button class="cta-btn" onclick="discoverCareers()">
+                Discover My Career Options →
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- AI LOADING MODAL -->
+    <div class="modal" id="aiModal">
+
+        <div class="modal-box">
+
+            <div class="loader"></div>
+
+            <h3>ProSync AI is analysing your profile...</h3>
+
+            <p>
+                Connecting your interests, strengths, hobbies and explored areas
+                to possible career directions.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function discoverCareers() {
+
+            const modal = document.getElementById("aiModal");
+
+            modal.style.display = "flex";
+
+            setTimeout(function () {
+
+                window.location.href = "file:///C:/Users/my/OneDrive/PROSYNC.PRO/career-suggestions.html";
+
+            }, 2200);
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html

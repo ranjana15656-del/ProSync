@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ProSync — Learning Journey</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #14213d;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e5e9f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769ff;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .step {
+            color: #667085;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 55px 0 70px;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769ff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            color: #667085;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* CAREER BAR */
+
+        .career-bar {
+            margin-top: 35px;
+            background: #14213d;
+            color: white;
+            border-radius: 16px;
+            padding: 21px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .career-label {
+            color: #aab7ce;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .career-name {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .career-icon {
+            font-size: 27px;
+        }
+
+        /* SECTION */
+
+        .section {
+            margin-top: 55px;
+        }
+
+        .section-heading {
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .section-heading p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* JOURNEY STEPS */
+
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .journey-card {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 16px;
+            padding: 23px;
+            transition: 0.2s;
+        }
+
+        .journey-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(20, 33, 61, 0.06);
+            border-color: #1769ff;
+        }
+
+        .journey-number {
+            width: 34px;
+            height: 34px;
+            background: #edf4ff;
+            color: #1769ff;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 17px;
+        }
+
+        .journey-icon {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .journey-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .journey-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* LEARNING PLAN */
+
+        .learning-box {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 18px;
+            padding: 28px;
+        }
+
+        .learning-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 20px 0;
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        .learning-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .learning-row:first-child {
+            padding-top: 0;
+        }
+
+        .learning-icon {
+            width: 44px;
+            height: 44px;
+            background: #edf4ff;
+            color: #1769ff;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            flex-shrink: 0;
+        }
+
+        .learning-content h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .learning-content p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .skill-card {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 14px;
+            padding: 19px;
+        }
+
+        .skill-card h3 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .skill-card p {
+            color: #667085;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .skill-status {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 5px 8px;
+            background: #f2f5f9;
+            color: #475467;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* PRACTICE */
+
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .practice-card {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 15px;
+            padding: 22px;
+        }
+
+        .practice-icon {
+            font-size: 26px;
+            margin-bottom: 13px;
+        }
+
+        .practice-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .practice-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .practice-btn {
+            margin-top: 15px;
+            border: 1px solid #d6deeb;
+            background: white;
+            color: #1769ff;
+            border-radius: 8px;
+            padding: 9px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* PROGRESS */
+
+        .progress-box {
+            background: #eef5ff;
+            border: 1px solid #d9e8ff;
+            border-radius: 17px;
+            padding: 25px;
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .progress-top strong {
+            font-size: 15px;
+        }
+
+        .progress-top span {
+            color: #1769ff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 9px;
+            background: #dce7f8;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 25%;
+            height: 100%;
+            background: #1769ff;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .progress-box p {
+            margin-top: 12px;
+            color: #667085;
+            font-size: 12px;
+        }
+
+        /* CTA */
+
+        .cta {
+            margin-top: 55px;
+            background: #14213d;
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #b7c2d5;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .cta button {
+            background: #1769ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 25px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .note {
+            margin-top: 25px;
+            text-align: center;
+            color: #667085;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #14213d;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
+            z-index: 100;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .journey-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid,
+            .practice-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .step {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+                padding-top: 35px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .journey-grid,
+            .skills-grid,
+            .practice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-box {
+                padding: 20px;
+            }
+
+            .cta {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo-area">
+            <div class="logo">P</div>
+            <span>ProSync</span>
+        </div>
+
+        <div class="step">
+            Learning Journey · Step 8
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="eyebrow">
+                📚 LEARNING JOURNEY
+            </div>
+
+            <h1>
+                Learn. Practise. Build.
+            </h1>
+
+            <p>
+                Turn your career goal into practical learning activities
+                and build your skills step by step.
+            </p>
+
+        </section>
+
+
+        <!-- CAREER -->
+
+        <div class="career-bar">
+
+            <div>
+
+                <div class="career-label">
+                    Your learning journey
+                </div>
+
+                <div class="career-name" id="careerName">
+                    Software Developer
+                </div>
+
+            </div>
+
+            <div class="career-icon">
+                📚
+            </div>
+
+        </div>
+
+
+        <!-- FOUR STEPS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    How your learning journey works
+                </h2>
+
+                <p>
+                    Progress gradually from understanding to building.
+                </p>
+
+            </div>
+
+
+            <div class="journey-grid">
+
+
+                <div class="journey-card">
+
+                    <div class="journey-number">01</div>
+
+                    <div class="journey-icon">🔎</div>
+
+                    <h3>
+                        Understand
+                    </h3>
+
+                    <p>
+                        Learn the basics and understand why the skill
+                        matters for your chosen career.
+                    </p>
+
+                </div>
+
+
+                <div class="journey-card">
+
+                    <div class="journey-number">02</div>
+
+                    <div class="journey-icon">📖</div>
+
+                    <h3>
+                        Learn
+                    </h3>
+
+                    <p>
+                        Use learning platforms, school resources and
+                        educational content to build your knowledge.
+                    </p>
+
+                </div>
+
+
+                <div class="journey-card">
+
+                    <div class="journey-number">03</div>
+
+                    <div class="journey-icon">🧩</div>
+
+                    <h3>
+                        Practise
+                    </h3>
+
+                    <p>
+                        Solve small challenges and activities to apply
+                        what you have learned.
+                    </p>
+
+                </div>
+
+
+                <div class="journey-card">
+
+                    <div class="journey-number">04</div>
+
+                    <div class="journey-icon">🛠️</div>
+
+                    <h3>
+                        Build
+                    </h3>
+
+                    <p>
+                        Create projects that demonstrate your skills,
+                        creativity and progress.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEARNING PLAN -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Your learning plan
+                </h2>
+
+                <p>
+                    A simple approach to start learning without feeling overwhelmed.
+                </p>
+
+            </div>
+
+
+            <div class="learning-box">
+
+
+                <div class="learning-row">
+
+                    <div class="learning-icon">
+                        1
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            Start with the basics
+                        </h3>
+
+                        <p>
+                            Understand important concepts and vocabulary
+                            before moving into advanced topics.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="learning-row">
+
+                    <div class="learning-icon">
+                        2
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            Learn one skill at a time
+                        </h3>
+
+                        <p>
+                            Focus on a small set of skills instead of trying
+                            to learn everything at once.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="learning-row">
+
+                    <div class="learning-icon">
+                        3
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            Practise through activities
+                        </h3>
+
+                        <p>
+                            Apply your knowledge through exercises,
+                            challenges and small experiments.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="learning-row">
+
+                    <div class="learning-icon">
+                        4
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            Turn learning into projects
+                        </h3>
+
+                        <p>
+                            Build something meaningful and use your project
+                            to demonstrate what you have learned.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Skills to develop
+                </h2>
+
+                <p>
+                    These are example skill areas you can gradually explore.
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Problem Solving
+                    </h3>
+
+                    <p>
+                        Learn to break problems into smaller steps.
+                    </p>
+
+                    <span class="skill-status">
+                        BUILD
+                    </span>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Communication
+                    </h3>
+
+                    <p>
+                        Explain your ideas clearly through speaking and writing.
+                    </p>
+
+                    <span class="skill-status">
+                        PRACTISE
+                    </span>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Digital Skills
+                    </h3>
+
+                    <p>
+                        Become comfortable with useful digital tools.
+                    </p>
+
+                    <span class="skill-status">
+                        LEARN
+                    </span>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Creativity
+                    </h3>
+
+                    <p>
+                        Explore different ways to create and solve problems.
+                    </p>
+
+                    <span class="skill-status">
+                        EXPLORE
+                    </span>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Project Skills
+                    </h3>
+
+                    <p>
+                        Learn how to plan, create and present a project.
+                    </p>
+
+                    <span class="skill-status">
+                        BUILD
+                    </span>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Teamwork
+                    </h3>
+
+                    <p>
+                        Learn to collaborate and contribute to group projects.
+                    </p>
+
+                    <span class="skill-status">
+                        PRACTISE
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICAL ACTIVITIES -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Try something practical
+                </h2>
+
+                <p>
+                    Small activities can help turn knowledge into experience.
+                </p>
+
+            </div>
+
+
+            <div class="practice-grid">
+
+
+                <div class="practice-card">
+
+                    <div class="practice-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        Solve a Challenge
+                    </h3>
+
+                    <p>
+                        Choose a simple problem and think of different
+                        ways to solve it.
+                    </p>
+
+                    <button class="practice-btn" onclick="showToast('Challenge activity added to your journey.')">
+                        Try Activity
+                    </button>
+
+                </div>
+
+
+                <div class="practice-card">
+
+                    <div class="practice-icon">
+                        🛠️
+                    </div>
+
+                    <h3>
+                        Build a Mini Project
+                    </h3>
+
+                    <p>
+                        Create a small project related to something
+                        you are interested in.
+                    </p>
+
+                    <button class="practice-btn" onclick="showToast('Mini project activity added.')">
+                        Start Project
+                    </button>
+
+                </div>
+
+
+                <div class="practice-card">
+
+                    <div class="practice-icon">
+                        🎤
+                    </div>
+
+                    <h3>
+                        Present Your Work
+                    </h3>
+
+                    <p>
+                        Explain what you created, what you learned
+                        and how you can improve it.
+                    </p>
+
+                    <button class="practice-btn" onclick="showToast('Presentation activity added.')">
+                        Try Activity
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Your learning progress
+                </h2>
+
+                <p>
+                    Progress is about consistency, not speed.
+                </p>
+
+            </div>
+
+
+            <div class="progress-box">
+
+                <div class="progress-top">
+
+                    <strong>
+                        Learning Journey
+                    </strong>
+
+                    <span id="progressText">
+                        25%
+                    </span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill" id="progressFill">
+                    </div>
+
+                </div>
+
+                <p>
+                    Start with one skill and gradually add more activities
+                    as your confidence grows.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="cta">
+
+            <h2>
+                Ready to showcase what you build?
+            </h2>
+
+            <p>
+                Your projects, skills and achievements can become part
+                of your ProSync portfolio.
+            </p>
+
+            <button onclick="goToPortfolio()">
+                Create My Portfolio →
+            </button>
+
+        </section>
+
+
+        <div class="note">
+            Learning paths can change as your interests grow.
+            ProSync is designed to help you explore and adapt your journey.
+        </div>
+
+    </main>
+
+
+    <div class="toast" id="toast"></div>
+
+
+    <script>
+
+        /* -------------------------------
+           GET CAREER
+        ------------------------------- */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const career =
+            params.get("career") || "Software Developer";
+
+
+        document.getElementById("careerName")
+            .textContent = career;
+
+
+        /* -------------------------------
+           TOAST
+        ------------------------------- */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.style.display = "block";
+
+            setTimeout(function () {
+
+                toast.style.display = "none";
+
+            }, 2200);
+
+        }
+
+
+        /* -------------------------------
+           PORTFOLIO
+        ------------------------------- */
+
+        function goToPortfolio() {
+
+            window.location.href =
+                "portfolio.html?career=" +
+                encodeURIComponent(career);
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

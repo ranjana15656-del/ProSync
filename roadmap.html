@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ProSync — Personal Roadmap</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #14213d;
+        }
+
+        .navbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e5e9f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769ff;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .step {
+            font-size: 14px;
+            color: #667085;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 55px 0 70px;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769ff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            color: #667085;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .career-bar {
+            margin-top: 35px;
+            background: #14213d;
+            color: white;
+            padding: 21px 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .career-label {
+            color: #aab7ce;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .career-name {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .section {
+            margin-top: 55px;
+        }
+
+        .section-heading {
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .section-heading p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* ROADMAP */
+
+        .roadmap {
+            position: relative;
+            display: grid;
+            gap: 18px;
+        }
+
+        .roadmap::before {
+            content: "";
+            position: absolute;
+            left: 29px;
+            top: 30px;
+            bottom: 30px;
+            width: 2px;
+            background: #dce5f5;
+        }
+
+        .roadmap-card {
+            position: relative;
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 17px;
+            padding: 25px 25px 25px 80px;
+            min-height: 125px;
+            transition: 0.2s;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(20, 33, 61, 0.06);
+        }
+
+        .number {
+            position: absolute;
+            left: 8px;
+            top: 27px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #1769ff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            z-index: 2;
+            border: 5px solid #f7f9fc;
+        }
+
+        .roadmap-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-card p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .tag-row {
+            margin-top: 13px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #f1f5fa;
+            color: #475467;
+            padding: 6px 9px;
+            border-radius: 7px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-bottom: 4px;
+        }
+
+        /* TWO COLUMNS */
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .info-icon {
+            font-size: 27px;
+            margin-bottom: 14px;
+        }
+
+        .info-card h3 {
+            font-size: 18px;
+            margin-bottom: 9px;
+        }
+
+        .info-card p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* GOAL */
+
+        .goal-box {
+            background: #eef5ff;
+            border: 1px solid #d8e8ff;
+            border-radius: 17px;
+            padding: 25px;
+        }
+
+        .goal-box h3 {
+            font-size: 18px;
+            margin-bottom: 9px;
+        }
+
+        .goal-box p {
+            color: #52627a;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* CHECKLIST */
+
+        .checklist {
+            display: grid;
+            gap: 12px;
+        }
+
+        .check-item {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 12px;
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .check {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #c9d3e2;
+            border-radius: 6px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .check-item.completed {
+            background: #f5f9ff;
+        }
+
+        .check-item.completed .check {
+            background: #1769ff;
+            border-color: #1769ff;
+            position: relative;
+        }
+
+        .check-item.completed .check::after {
+            content: "✓";
+            color: white;
+            position: absolute;
+            left: 4px;
+            top: -1px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .check-item span {
+            font-size: 14px;
+            color: #475467;
+        }
+
+        /* CTA */
+
+        .cta {
+            margin-top: 55px;
+            background: #14213d;
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #b7c2d5;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .cta button {
+            border: none;
+            background: #1769ff;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .note {
+            margin-top: 30px;
+            color: #667085;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #14213d;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .step {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+                padding-top: 35px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-card {
+                padding-left: 70px;
+            }
+
+            .cta {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo-area">
+            <div class="logo">P</div>
+            <span>ProSync</span>
+        </div>
+
+        <div class="step">
+            Personal Roadmap · Step 7
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="eyebrow">
+                🎯 PERSONAL ROADMAP
+            </div>
+
+            <h1>
+                Your journey starts with a clear plan.
+            </h1>
+
+            <p>
+                ProSync turns your career interests, skills and education
+                exploration into a simple roadmap you can follow step by step.
+            </p>
+
+        </section>
+
+
+        <!-- CAREER -->
+
+        <div class="career-bar">
+
+            <div>
+
+                <div class="career-label">
+                    Your selected career
+                </div>
+
+                <div class="career-name" id="careerName">
+                    Software Developer
+                </div>
+
+            </div>
+
+            <div>🚀</div>
+
+        </div>
+
+
+        <!-- ROADMAP -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Your recommended journey
+                </h2>
+
+                <p>
+                    Follow the journey gradually. You don't need to complete everything at once.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap">
+
+
+                <div class="roadmap-card">
+
+                    <div class="number">1</div>
+
+                    <h3>
+                        Understand Your Career
+                    </h3>
+
+                    <p>
+                        Learn what your chosen career involves, where people work,
+                        what they do and what future pathways exist.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">Career Awareness</span>
+                        <span class="tag">Explore</span>
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-card">
+
+                    <div class="number">2</div>
+
+                    <h3>
+                        Build Your Foundation
+                    </h3>
+
+                    <p>
+                        Strengthen your school subjects, communication,
+                        problem solving and other useful foundations.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">School Learning</span>
+                        <span class="tag">Fundamentals</span>
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-card">
+
+                    <div class="number">3</div>
+
+                    <h3>
+                        Learn Relevant Skills
+                    </h3>
+
+                    <p>
+                        Choose skills related to your career and learn them
+                        through suitable learning resources.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">Learn</span>
+                        <span class="tag">Skill Building</span>
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-card">
+
+                    <div class="number">4</div>
+
+                    <h3>
+                        Practise What You Learn
+                    </h3>
+
+                    <p>
+                        Turn learning into practice through small exercises,
+                        activities and real-world challenges.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">Practice</span>
+                        <span class="tag">Challenges</span>
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-card">
+
+                    <div class="number">5</div>
+
+                    <h3>
+                        Build Projects
+                    </h3>
+
+                    <p>
+                        Create meaningful projects that demonstrate your
+                        interests, creativity and developing skills.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">Projects</span>
+                        <span class="tag">Build</span>
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-card">
+
+                    <div class="number">6</div>
+
+                    <h3>
+                        Participate in Opportunities
+                    </h3>
+
+                    <p>
+                        Explore competitions, hackathons, workshops, clubs,
+                        events and other student opportunities.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">Competitions</span>
+                        <span class="tag">Events</span>
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-card">
+
+                    <div class="number">7</div>
+
+                    <h3>
+                        Showcase Your Journey
+                    </h3>
+
+                    <p>
+                        Organise your projects, achievements and experiences
+                        into a portfolio that represents your growth.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">Portfolio</span>
+                        <span class="tag">Achievements</span>
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-card">
+
+                    <div class="number">8</div>
+
+                    <h3>
+                        Prepare for Your Future
+                    </h3>
+
+                    <p>
+                        Continue improving your skills and prepare for future
+                        higher education and career opportunities.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">Future Study</span>
+                        <span class="tag">Career Readiness</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PERSONAL PLAN -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Your focus areas
+                </h2>
+
+                <p>
+                    Start small and build consistently.
+                </p>
+
+            </div>
+
+
+            <div class="two-column">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Learn First
+                    </h3>
+
+                    <p>
+                        Understand the basics of your chosen field before
+                        moving into advanced topics.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🛠️
+                    </div>
+
+                    <h3>
+                        Build & Practise
+                    </h3>
+
+                    <p>
+                        Apply what you learn through projects, activities
+                        and practical experiences.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GOAL -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Your long-term direction
+                </h2>
+
+            </div>
+
+
+            <div class="goal-box">
+
+                <h3>
+                    🎯 Career Goal
+                </h3>
+
+                <p id="goalText">
+                    Explore the Software Developer pathway,
+                    build relevant skills and gradually create
+                    projects that demonstrate your learning.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHECKLIST -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Start your journey
+                </h2>
+
+                <p>
+                    Mark activities as you work through your roadmap.
+                </p>
+
+            </div>
+
+
+            <div class="checklist">
+
+                <div class="check-item" onclick="toggleTask(this)">
+                    <div class="check"></div>
+                    <span>
+                        Understand what my chosen career involves
+                    </span>
+                </div>
+
+
+                <div class="check-item" onclick="toggleTask(this)">
+                    <div class="check"></div>
+                    <span>
+                        Choose one skill to start learning
+                    </span>
+                </div>
+
+
+                <div class="check-item" onclick="toggleTask(this)">
+                    <div class="check"></div>
+                    <span>
+                        Complete my first small practice activity
+                    </span>
+                </div>
+
+
+                <div class="check-item" onclick="toggleTask(this)">
+                    <div class="check"></div>
+                    <span>
+                        Build my first project
+                    </span>
+                </div>
+
+
+                <div class="check-item" onclick="toggleTask(this)">
+                    <div class="check"></div>
+                    <span>
+                        Explore a student opportunity
+                    </span>
+                </div>
+
+
+                <div class="check-item" onclick="toggleTask(this)">
+                    <div class="check"></div>
+                    <span>
+                        Add my work to my ProSync portfolio
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="cta">
+
+            <h2>
+                Ready to learn, build and grow?
+            </h2>
+
+            <p>
+                Continue your journey by turning your roadmap
+                into practical learning and project activities.
+            </p>
+
+            <button onclick="continueJourney()">
+                Start Learning & Building →
+            </button>
+
+        </section>
+
+
+        <div class="note">
+            ProSync provides guidance and exploration support.
+            Your interests may change as you learn, so your roadmap can evolve with you.
+        </div>
+
+    </main>
+
+
+    <div class="toast" id="toast"></div>
+
+
+    <script>
+
+        /* -------------------------------
+           GET CAREER FROM URL
+        ------------------------------- */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const career =
+            params.get("career") || "Software Developer";
+
+
+        document.getElementById("careerName")
+            .textContent = career;
+
+
+        document.getElementById("goalText")
+            .textContent =
+            `Explore the ${career} pathway, build relevant skills and gradually create projects that demonstrate your learning.`;
+
+
+        /* -------------------------------
+           TASK CHECKLIST
+        ------------------------------- */
+
+        function toggleTask(item) {
+
+            item.classList.toggle("completed");
+
+            if (item.classList.contains("completed")) {
+
+                showToast("Great! Progress updated ✓");
+
+            } else {
+
+                showToast("Task marked as incomplete.");
+
+            }
+
+        }
+
+
+        /* -------------------------------
+           CONTINUE
+        ------------------------------- */
+
+        function continueJourney() {
+
+            window.location.href =
+                "learning-journey.html?career=" +
+                encodeURIComponent(career);
+
+        }
+
+
+        /* -------------------------------
+           TOAST
+        ------------------------------- */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.style.display = "block";
+
+            setTimeout(function () {
+
+                toast.style.display = "none";
+
+            }, 2200);
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

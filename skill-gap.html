@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProSync - Skill Gap</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #14213d;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e6eaf0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769ff;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .nav-text {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* MAIN */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 42px auto 70px;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769ff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 37px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #667085;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* CAREER BAR */
+        .career-bar {
+            background: white;
+            border: 1px solid #e1e7f0;
+            border-radius: 15px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .career-icon {
+            width: 46px;
+            height: 46px;
+            background: #edf4ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .career-bar small {
+            color: #667085;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .career-bar strong {
+            font-size: 17px;
+        }
+
+        /* SECTION */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            margin-bottom: 17px;
+        }
+
+        .section-title h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* SKILL CARDS */
+        .skills-box {
+            background: white;
+            border: 1px solid #e1e7f0;
+            border-radius: 18px;
+            padding: 24px;
+        }
+
+        .skill-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 17px 0;
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        .skill-row:last-child {
+            border-bottom: none;
+        }
+
+        .skill-info {
+            flex: 1;
+        }
+
+        .skill-info h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .skill-info p {
+            color: #7b8494;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .skill-status {
+            min-width: 125px;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .building {
+            background: #fff7e6;
+            color: #b76b00;
+        }
+
+        .explore {
+            background: #edf4ff;
+            color: #1769ff;
+        }
+
+        .strong {
+            background: #ecfdf3;
+            color: #16804b;
+        }
+
+        /* TWO COLUMN */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e1e7f0;
+            border-radius: 17px;
+            padding: 23px;
+        }
+
+        .card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .card-description {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        /* CHIPS */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .chip {
+            padding: 8px 12px;
+            border-radius: 18px;
+            font-size: 12px;
+        }
+
+        .chip.green {
+            background: #ecfdf3;
+            color: #16804b;
+            border: 1px solid #ccebd9;
+        }
+
+        .chip.orange {
+            background: #fff7e6;
+            color: #b76b00;
+            border: 1px solid #f5dfb7;
+        }
+
+        /* ROADMAP */
+        .roadmap {
+            background: #eef5ff;
+            border: 1px solid #dbe8ff;
+            border-radius: 18px;
+            padding: 25px;
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .roadmap-item {
+            background: white;
+            border: 1px solid #e0e8f5;
+            border-radius: 13px;
+            padding: 18px;
+        }
+
+        .roadmap-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #1769ff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 11px;
+        }
+
+        .roadmap-item h3 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .roadmap-item p {
+            color: #667085;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* CTA */
+        .cta {
+            margin-top: 30px;
+            background: #14213d;
+            color: white;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 23px;
+            margin-bottom: 9px;
+        }
+
+        .cta p {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .cta button {
+            margin-top: 20px;
+            padding: 13px 24px;
+            background: #1769ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .cta button:hover {
+            background: #0f56d8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 750px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-row {
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-text {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .skill-row {
+                flex-direction: column;
+            }
+
+            .skill-status {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="brand">
+            <div class="logo">P</div>
+            ProSync
+        </div>
+
+        <div class="nav-text">
+            Skill Discovery · Step 2
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="eyebrow">
+                🧠 Skill Discovery
+            </div>
+
+            <h1>Understand the skills behind your career.</h1>
+
+            <p>
+                Every career needs different skills. ProSync helps you understand
+                which skills are important, what you are already exploring and
+                which areas you can develop next.
+            </p>
+
+        </section>
+
+
+        <!-- SELECTED CAREER -->
+        <div class="career-bar">
+
+            <div class="career-icon">
+                🎯
+            </div>
+
+            <div>
+                <small>Your selected career</small>
+                <strong id="careerName">Software Developer</strong>
+            </div>
+
+        </div>
+
+
+        <!-- REQUIRED SKILLS -->
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>🧩 Skills Commonly Used in This Career</h2>
+
+                <p>
+                    These are areas you can gradually learn and practise.
+                </p>
+
+            </div>
+
+
+            <div class="skills-box">
+
+
+                <div class="skill-row">
+
+                    <div class="skill-info">
+                        <h3>Problem Solving</h3>
+                        <p>
+                            Understand problems, break them into smaller parts and
+                            think of possible solutions.
+                        </p>
+                    </div>
+
+                    <div class="skill-status strong">
+                        Already Exploring
+                    </div>
+
+                </div>
+
+
+                <div class="skill-row">
+
+                    <div class="skill-info">
+                        <h3>Communication</h3>
+                        <p>
+                            Explain ideas clearly and work effectively with other people.
+                        </p>
+                    </div>
+
+                    <div class="skill-status strong">
+                        Already Exploring
+                    </div>
+
+                </div>
+
+
+                <div class="skill-row">
+
+                    <div class="skill-info">
+                        <h3>Digital Skills</h3>
+                        <p>
+                            Become comfortable using digital tools and technologies.
+                        </p>
+                    </div>
+
+                    <div class="skill-status building">
+                        Build Further
+                    </div>
+
+                </div>
+
+
+                <div class="skill-row">
+
+                    <div class="skill-info">
+                        <h3>Project Skills</h3>
+                        <p>
+                            Learn how to plan, create and complete small projects.
+                        </p>
+                    </div>
+
+                    <div class="skill-status building">
+                        Build Further
+                    </div>
+
+                </div>
+
+
+                <div class="skill-row">
+
+                    <div class="skill-info">
+                        <h3>Technical Knowledge</h3>
+                        <p>
+                            Develop knowledge related to the tools and technologies
+                            used in the selected career.
+                        </p>
+                    </div>
+
+                    <div class="skill-status explore">
+                        Explore
+                    </div>
+
+                </div>
+
+
+                <div class="skill-row">
+
+                    <div class="skill-info">
+                        <h3>Teamwork</h3>
+                        <p>
+                            Collaborate with others and contribute to group projects.
+                        </p>
+                    </div>
+
+                    <div class="skill-status strong">
+                        Already Exploring
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- CURRENT VS FUTURE -->
+        <section class="section">
+
+            <div class="two-column">
+
+
+                <!-- CURRENT -->
+                <div class="card">
+
+                    <h3>✅ Skills You Are Already Exploring</h3>
+
+                    <p class="card-description">
+                        Based on your profile, these are skills you have already
+                        shown interest in or started developing.
+                    </p>
+
+                    <div class="chips">
+
+                        <span class="chip green">
+                            Problem Solving
+                        </span>
+
+                        <span class="chip green">
+                            Creativity
+                        </span>
+
+                        <span class="chip green">
+                            Communication
+                        </span>
+
+                        <span class="chip green">
+                            Teamwork
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FUTURE -->
+                <div class="card">
+
+                    <h3>🎯 Skills You Can Develop Next</h3>
+
+                    <p class="card-description">
+                        These areas can be added to your learning journey over time.
+                    </p>
+
+                    <div class="chips">
+
+                        <span class="chip orange">
+                            Coding
+                        </span>
+
+                        <span class="chip orange">
+                            Digital Tools
+                        </span>
+
+                        <span class="chip orange">
+                            Project Building
+                        </span>
+
+                        <span class="chip orange">
+                            Technical Knowledge
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- PERSONAL ROADMAP -->
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>🗺️ Your Skill Development Path</h2>
+
+                <p>
+                    You don't need to learn everything at once. Build gradually.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap">
+
+                <div class="roadmap-grid">
+
+
+                    <div class="roadmap-item">
+
+                        <div class="roadmap-number">1</div>
+
+                        <h3>Understand</h3>
+
+                        <p>
+                            Learn what the skill means and why it is useful.
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <div class="roadmap-number">2</div>
+
+                        <h3>Learn</h3>
+
+                        <p>
+                            Use learning resources to build your knowledge.
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <div class="roadmap-number">3</div>
+
+                        <h3>Practise</h3>
+
+                        <p>
+                            Solve small problems and practise the skill regularly.
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <div class="roadmap-number">4</div>
+
+                        <h3>Build</h3>
+
+                        <p>
+                            Apply what you learn by creating small projects.
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <div class="roadmap-number">5</div>
+
+                        <h3>Showcase</h3>
+
+                        <p>
+                            Add meaningful projects and achievements to your profile.
+                        </p>
+
+                    </div>
+
+
+                    <div class="roadmap-item">
+
+                        <div class="roadmap-number">6</div>
+
+                        <h3>Improve</h3>
+
+                        <p>
+                            Review your progress and continue developing new skills.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+        <section class="cta">
+
+            <h2>Ready to start learning?</h2>
+
+            <p>
+                ProSync can now help you discover learning platforms and resources
+                based on the skills you want to develop.
+            </p>
+
+            <button onclick="continueNext()">
+                Explore Learning Platforms →
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* GET CAREER FROM URL */
+
+        const params = new URLSearchParams(window.location.search);
+
+        const selectedCareer = params.get("career");
+
+        if (selectedCareer) {
+            document.getElementById("careerName").innerText =
+                selectedCareer;
+        }
+
+
+        /* NEXT PAGE */
+
+        function continueNext() {
+
+            const career =
+                selectedCareer || "Software Developer";
+
+            window.location.href =
+                "learning-platforms.html?career=" +
+                encodeURIComponent(career);
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

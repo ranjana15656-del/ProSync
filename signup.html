@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ProSync | Create Account</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9fc;
+            color: #101828;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 76px;
+            background: white;
+            border-bottom: 1px solid #e7ebf2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            background: #155eef;
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: 800;
+            box-shadow: 0 8px 20px rgba(21, 94, 239, 0.2);
+        }
+
+        .signin-text {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .signin-btn {
+            margin-left: 10px;
+            padding: 10px 18px;
+            background: white;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* MAIN */
+
+        main {
+            min-height: calc(100vh - 76px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 45px 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 20px 50px rgba(16, 24, 40, 0.08);
+        }
+
+        .card-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: #155eef;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            color: #344054;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            padding: 0 14px;
+            font-size: 14px;
+            background: white;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #155eef;
+            box-shadow: 0 0 0 3px rgba(21, 94, 239, 0.1);
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        /* CHECKBOX */
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            margin: 22px 0;
+        }
+
+        .terms input {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+        }
+
+        .terms label {
+            font-size: 12px;
+            font-weight: 400;
+            color: #667085;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .terms span {
+            color: #155eef;
+            font-weight: 600;
+        }
+
+        /* BUTTON */
+
+        .create-btn {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 9px;
+            background: #155eef;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .create-btn:hover {
+            background: #004eeb;
+            transform: translateY(-1px);
+        }
+
+        .bottom-text {
+            text-align: center;
+            color: #667085;
+            font-size: 13px;
+            margin-top: 22px;
+        }
+
+        .bottom-text span {
+            color: #155eef;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #101828;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 9px;
+            font-size: 14px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .signin-text {
+                display: none;
+            }
+
+            .card {
+                padding: 26px 20px;
+                border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="brand">
+            <div class="logo">P</div>
+            <span>ProSync</span>
+        </div>
+
+        <div>
+            <span class="signin-text">
+                Already have an account?
+            </span>
+
+            <button class="signin-btn" onclick="goToSignIn()">
+                Sign In
+            </button>
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main>
+
+        <div class="card">
+
+            <div class="card-logo">
+                P
+            </div>
+
+            <h1>Create your ProSync account</h1>
+
+            <p class="subtitle">
+                Start your journey by creating your personal ProSync account.
+            </p>
+
+
+            <form onsubmit="createAccount(event)">
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input type="email" id="email" placeholder="you@example.com" required>
+
+                </div>
+
+
+                <!-- CLASS -->
+
+                <div class="row">
+
+                    <div class="form-group">
+
+                        <label for="class">
+                            Class
+                        </label>
+
+                        <select id="class" required>
+
+                            <option value="">
+                                Select class
+                            </option>
+
+                            <option>8th Standard</option>
+                            <option>9th Standard</option>
+                            <option>10th Standard</option>
+                            <option>11th Standard</option>
+                            <option>12th Standard</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="school">
+                            School Name
+                        </label>
+
+                        <input type="text" id="school" placeholder="School name" required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input type="password" id="password" placeholder="Create a password" required>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="terms">
+
+                    <input type="checkbox" id="terms" required>
+
+                    <label for="terms">
+                        I agree to the ProSync
+                        <span>Terms</span> and
+                        <span>Privacy Policy</span>.
+                    </label>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button type="submit" class="create-btn">
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <p class="bottom-text">
+                Already have an account?
+                <span onclick="goToSignIn()">Sign In</span>
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- TOAST -->
+
+    <div class="toast" id="toast"></div>
+
+
+    <script>
+
+        function showToast(message) {
+
+            const toast = document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.classList.add("show");
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2500);
+
+        }
+
+
+        function createAccount(event) {
+
+            event.preventDefault();
+
+            const password =
+                document.getElementById("password").value;
+
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+
+                showToast("Passwords do not match.");
+
+                return;
+            }
+
+            showToast(
+                "Account created successfully — Prototype mode"
+            );
+
+        }
+
+
+        function goToSignIn() {
+
+            showToast("Sign In page");
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

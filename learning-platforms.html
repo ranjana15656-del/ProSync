@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ProSync - Learning Platform Guide</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #14213d;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 72px;
+            background: #ffffff;
+            border-bottom: 1px solid #e6eaf0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769ff;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .nav-text {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* MAIN */
+        .container {
+            width: 90%;
+            max-width: 1120px;
+            margin: 42px auto 70px;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769ff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 37px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #667085;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* CAREER BAR */
+        .career-bar {
+            background: white;
+            border: 1px solid #e1e7f0;
+            border-radius: 15px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 32px;
+        }
+
+        .career-icon {
+            width: 46px;
+            height: 46px;
+            background: #edf4ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .career-bar small {
+            color: #667085;
+            display: block;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .career-bar strong {
+            font-size: 17px;
+        }
+
+        /* SECTION */
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            margin-bottom: 17px;
+        }
+
+        .section-title h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* LEARNING CARDS */
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .learning-card {
+            background: white;
+            border: 1px solid #e1e7f0;
+            border-radius: 17px;
+            padding: 22px;
+            box-shadow: 0 5px 18px rgba(20, 33, 61, 0.04);
+            transition: 0.2s;
+        }
+
+        .learning-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(20, 33, 61, 0.08);
+        }
+
+        .platform-icon {
+            width: 50px;
+            height: 50px;
+            background: #edf4ff;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .learning-card h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .platform-type {
+            display: inline-block;
+            background: #f2f4f7;
+            color: #667085;
+            padding: 5px 9px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-bottom: 13px;
+        }
+
+        .learning-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .learn-link {
+            display: inline-block;
+            color: #1769ff;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* LEARNING PATH */
+        .path-box {
+            background: white;
+            border: 1px solid #e1e7f0;
+            border-radius: 18px;
+            padding: 25px;
+        }
+
+        .path-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .path-step {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 13px;
+            padding: 18px;
+        }
+
+        .step-number {
+            width: 29px;
+            height: 29px;
+            border-radius: 50%;
+            background: #1769ff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 11px;
+        }
+
+        .path-step h3 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .path-step p {
+            color: #667085;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* SKILL PLAN */
+        .skill-plan {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .plan-card {
+            background: white;
+            border: 1px solid #e1e7f0;
+            border-radius: 17px;
+            padding: 22px;
+        }
+
+        .plan-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .plan-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .plan-items {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .plan-item {
+            background: #f8fafc;
+            border-radius: 9px;
+            padding: 11px;
+            font-size: 12px;
+            color: #475467;
+        }
+
+        /* RESOURCE NOTE */
+        .note {
+            background: #eef5ff;
+            border: 1px solid #dbe8ff;
+            border-radius: 16px;
+            padding: 21px;
+            margin-bottom: 30px;
+        }
+
+        .note h3 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .note p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta {
+            background: #14213d;
+            color: white;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 23px;
+            margin-bottom: 9px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: auto;
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .cta button {
+            margin-top: 20px;
+            padding: 13px 25px;
+            background: #1769ff;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .cta button:hover {
+            background: #0f56d8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .learning-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .path-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-text {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .learning-grid,
+            .path-list,
+            .skill-plan {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="brand">
+            <div class="logo">P</div>
+            ProSync
+        </div>
+
+        <div class="nav-text">
+            Learning Platform Guide
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="eyebrow">
+                📚 Learning Platform Guide
+            </div>
+
+            <h1>Turn your skill gap into a learning journey.</h1>
+
+            <p>
+                Discover where you can learn, what you can learn first and how
+                to move from knowledge to practice and projects.
+            </p>
+
+        </section>
+
+
+        <!-- CAREER -->
+        <div class="career-bar">
+
+            <div class="career-icon">
+                🎯
+            </div>
+
+            <div>
+                <small>Learning path for</small>
+                <strong id="careerName">Software Developer</strong>
+            </div>
+
+        </div>
+
+
+        <!-- PLATFORMS -->
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>🌐 Learning Platforms</h2>
+
+                <p>
+                    Different platforms can support different parts of your learning journey.
+                </p>
+
+            </div>
+
+
+            <div class="learning-grid">
+
+
+                <!-- KHAN -->
+                <div class="learning-card">
+
+                    <div class="platform-icon">
+                        📘
+                    </div>
+
+                    <h3>Khan Academy</h3>
+
+                    <span class="platform-type">
+                        Foundation Learning
+                    </span>
+
+                    <p>
+                        Useful for building fundamentals in areas such as mathematics,
+                        science and other academic concepts.
+                    </p>
+
+                    <span class="learn-link" onclick="openPlatform('Khan Academy')">
+                        Explore Platform →
+                    </span>
+
+                </div>
+
+
+                <!-- FREECODECAMP -->
+                <div class="learning-card">
+
+                    <div class="platform-icon">
+                        💻
+                    </div>
+
+                    <h3>freeCodeCamp</h3>
+
+                    <span class="platform-type">
+                        Coding & Technology
+                    </span>
+
+                    <p>
+                        Practice programming and web development through guided
+                        lessons and hands-on coding activities.
+                    </p>
+
+                    <span class="learn-link" onclick="openPlatform('freeCodeCamp')">
+                        Explore Platform →
+                    </span>
+
+                </div>
+
+
+                <!-- FIGMA -->
+                <div class="learning-card">
+
+                    <div class="platform-icon">
+                        🎨
+                    </div>
+
+                    <h3>Figma Learning</h3>
+
+                    <span class="platform-type">
+                        Design
+                    </span>
+
+                    <p>
+                        Explore digital design concepts, interface design and
+                        creative workflows.
+                    </p>
+
+                    <span class="learn-link" onclick="openPlatform('Figma Learning')">
+                        Explore Platform →
+                    </span>
+
+                </div>
+
+
+                <!-- YOUTUBE -->
+                <div class="learning-card">
+
+                    <div class="platform-icon">
+                        ▶️
+                    </div>
+
+                    <h3>Educational Videos</h3>
+
+                    <span class="platform-type">
+                        Visual Learning
+                    </span>
+
+                    <p>
+                        Learn concepts through tutorials, demonstrations and
+                        educational explanations from different creators.
+                    </p>
+
+                    <span class="learn-link" onclick="openPlatform('Educational Videos')">
+                        Explore Platform →
+                    </span>
+
+                </div>
+
+
+                <!-- PROJECT LEARNING -->
+                <div class="learning-card">
+
+                    <div class="platform-icon">
+                        🛠️
+                    </div>
+
+                    <h3>Project-Based Learning</h3>
+
+                    <span class="platform-type">
+                        Practical Skills
+                    </span>
+
+                    <p>
+                        Turn what you learn into small projects and gradually
+                        build practical experience.
+                    </p>
+
+                    <span class="learn-link" onclick="openPlatform('Project-Based Learning')">
+                        Explore →
+                    </span>
+
+                </div>
+
+
+                <!-- SCHOOL RESOURCES -->
+                <div class="learning-card">
+
+                    <div class="platform-icon">
+                        🏫
+                    </div>
+
+                    <h3>School & Community Resources</h3>
+
+                    <span class="platform-type">
+                        Local Learning
+                    </span>
+
+                    <p>
+                        Explore school clubs, teachers, workshops, communities and
+                        other learning opportunities around you.
+                    </p>
+
+                    <span class="learn-link" onclick="openPlatform('School Resources')">
+                        Explore →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEARNING PATH -->
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>🛤️ Recommended Learning Flow</h2>
+
+                <p>
+                    Learn step-by-step instead of trying to learn everything at once.
+                </p>
+
+            </div>
+
+
+            <div class="path-box">
+
+                <div class="path-list">
+
+
+                    <div class="path-step">
+
+                        <div class="step-number">1</div>
+
+                        <h3>Understand</h3>
+
+                        <p>
+                            Start with the basic concepts and understand why the skill matters.
+                        </p>
+
+                    </div>
+
+
+                    <div class="path-step">
+
+                        <div class="step-number">2</div>
+
+                        <h3>Learn</h3>
+
+                        <p>
+                            Follow beginner-friendly lessons and learning resources.
+                        </p>
+
+                    </div>
+
+
+                    <div class="path-step">
+
+                        <div class="step-number">3</div>
+
+                        <h3>Practise</h3>
+
+                        <p>
+                            Solve exercises and practise the concepts you learned.
+                        </p>
+
+                    </div>
+
+
+                    <div class="path-step">
+
+                        <div class="step-number">4</div>
+
+                        <h3>Build</h3>
+
+                        <p>
+                            Create a small project to apply your knowledge.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PERSONAL LEARNING PLAN -->
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>🎯 Your Learning Plan</h2>
+
+                <p>
+                    A simple plan to help you move from learning to doing.
+                </p>
+
+            </div>
+
+
+            <div class="skill-plan">
+
+
+                <div class="plan-card">
+
+                    <h3>📖 Learn First</h3>
+
+                    <p>
+                        Focus on the fundamentals before moving into advanced topics.
+                    </p>
+
+                    <div class="plan-items">
+
+                        <div class="plan-item">
+                            ✓ Learn basic concepts
+                        </div>
+
+                        <div class="plan-item">
+                            ✓ Understand key terms
+                        </div>
+
+                        <div class="plan-item">
+                            ✓ Follow beginner lessons
+                        </div>
+
+                        <div class="plan-item">
+                            ✓ Take simple notes
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="plan-card">
+
+                    <h3>🛠️ Practise & Build</h3>
+
+                    <p>
+                        Apply your knowledge through activities and small projects.
+                    </p>
+
+                    <div class="plan-items">
+
+                        <div class="plan-item">
+                            ✓ Solve small challenges
+                        </div>
+
+                        <div class="plan-item">
+                            ✓ Try practical exercises
+                        </div>
+
+                        <div class="plan-item">
+                            ✓ Build a mini project
+                        </div>
+
+                        <div class="plan-item">
+                            ✓ Reflect and improve
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- IMPORTANT NOTE -->
+        <div class="note">
+
+            <h3>💡 ProSync Learning Philosophy</h3>
+
+            <p>
+                You don't need to master every skill immediately. Start with one
+                skill, learn the basics, practise it and apply it through a small
+                project. Your learning journey can grow gradually as your interests
+                become clearer.
+            </p>
+
+        </div>
+
+
+        <!-- CTA -->
+        <section class="cta">
+
+            <h2>Ready to explore your education options?</h2>
+
+            <p>
+                Now that you understand the career, skills and learning paths,
+                ProSync can help you explore education options and colleges
+                connected to your career direction.
+            </p>
+
+            <button onclick="continueNext()">
+                Explore Education & Colleges →
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* GET CAREER */
+
+        const params = new URLSearchParams(window.location.search);
+
+        const selectedCareer = params.get("career");
+
+        if (selectedCareer) {
+
+            document.getElementById("careerName").innerText =
+                selectedCareer;
+
+        }
+
+
+        /* PLATFORM MESSAGE */
+
+        function openPlatform(platform) {
+
+            alert(
+                platform +
+                " selected. In the next version, ProSync can connect this card to the relevant learning resources."
+            );
+
+        }
+
+
+        /* NEXT PAGE */
+
+        function continueNext() {
+
+            const career =
+                selectedCareer || "Software Developer";
+
+            window.location.href =
+                "college-explorer.html?career=" +
+                encodeURIComponent(career);
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

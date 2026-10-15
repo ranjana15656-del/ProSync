@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ProSync — My Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #14213d;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e5e9f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769ff;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .step {
+            color: #667085;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 50px 0 70px;
+        }
+
+        /* PROFILE HEADER */
+
+        .profile-header {
+            background: #14213d;
+            color: white;
+            border-radius: 22px;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            background: #1769ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .profile-info h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .profile-info p {
+            color: #b9c4d7;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .profile-tag {
+            display: inline-block;
+            margin-top: 13px;
+            padding: 7px 11px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #dbe5f5;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* SECTION */
+
+        .section {
+            margin-top: 45px;
+        }
+
+        .section-heading {
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            font-size: 24px;
+            margin-bottom: 7px;
+        }
+
+        .section-heading p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+
+        .about-card {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 17px;
+            padding: 25px;
+        }
+
+        .about-card p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .skill {
+            background: white;
+            border: 1px solid #dfe5ee;
+            color: #475467;
+            padding: 10px 14px;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* GRID */
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 16px;
+            padding: 22px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(20, 33, 61, 0.06);
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            background: #edf4ff;
+            color: #1769ff;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .card-tag {
+            display: inline-block;
+            margin-top: 14px;
+            background: #f2f5f9;
+            color: #475467;
+            padding: 6px 9px;
+            border-radius: 7px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* ACHIEVEMENT */
+
+        .achievement-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .achievement-icon {
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+
+        .achievement-card h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .achievement-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 14px;
+            padding: 21px;
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 25px;
+            margin-bottom: 5px;
+            color: #1769ff;
+        }
+
+        .stat span {
+            color: #667085;
+            font-size: 12px;
+        }
+
+        /* PROFILE READINESS */
+
+        .readiness {
+            background: #eef5ff;
+            border: 1px solid #d9e8ff;
+            border-radius: 18px;
+            padding: 26px;
+        }
+
+        .readiness-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .readiness-top h3 {
+            font-size: 17px;
+        }
+
+        .readiness-top span {
+            color: #1769ff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .progress {
+            height: 9px;
+            background: #dce7f8;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 65%;
+            height: 100%;
+            background: #1769ff;
+            border-radius: 10px;
+        }
+
+        .readiness p {
+            margin-top: 12px;
+            color: #667085;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+
+        .cta {
+            margin-top: 50px;
+            background: #14213d;
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #b7c2d5;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .cta button {
+            background: #1769ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 25px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .note {
+            text-align: center;
+            color: #667085;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-top: 25px;
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background: #14213d;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
+            z-index: 100;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .step {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-info h1 {
+                font-size: 26px;
+            }
+
+            .card-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo-area">
+            <div class="logo">P</div>
+            <span>ProSync</span>
+        </div>
+
+        <div class="step">
+            My Portfolio · Step 9
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+
+        <!-- PROFILE HEADER -->
+
+        <section class="profile-header">
+
+            <div class="profile-avatar">
+                P
+            </div>
+
+            <div class="profile-info">
+
+                <h1>
+                    My ProSync Portfolio
+                </h1>
+
+                <p>
+                    A growing record of my skills, projects,
+                    achievements and learning journey.
+                </p>
+
+                <span class="profile-tag" id="careerTag">
+                    Exploring: Software Developer
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    About My Journey
+                </h2>
+
+                <p>
+                    A simple introduction to your interests and goals.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <p>
+                    I am a school student exploring different career
+                    possibilities and developing skills through learning,
+                    practice and projects. I am interested in understanding
+                    how my interests can connect with future education
+                    and career opportunities.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    My Skills
+                </h2>
+
+                <p>
+                    Skills I am currently exploring and developing.
+                </p>
+
+            </div>
+
+
+            <div class="skills">
+
+                <span class="skill">Problem Solving</span>
+                <span class="skill">Communication</span>
+                <span class="skill">Creativity</span>
+                <span class="skill">Teamwork</span>
+                <span class="skill">Critical Thinking</span>
+                <span class="skill">Digital Skills</span>
+                <span class="skill">Project Skills</span>
+                <span class="skill">Research</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    My Projects
+                </h2>
+
+                <p>
+                    Things I have created while learning and practising.
+                </p>
+
+            </div>
+
+
+            <div class="card-grid">
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        💡
+                    </div>
+
+                    <h3>
+                        Career Discovery Project
+                    </h3>
+
+                    <p>
+                        A project exploring different careers,
+                        skills and education pathways.
+                    </p>
+
+                    <span class="card-tag">
+                        EXPLORATION
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🛠️
+                    </div>
+
+                    <h3>
+                        My First Mini Project
+                    </h3>
+
+                    <p>
+                        A small practical project created to
+                        apply newly learned skills.
+                    </p>
+
+                    <span class="card-tag">
+                        PRACTICE
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        Future Project
+                    </h3>
+
+                    <p>
+                        A space for the next project I build
+                        during my learning journey.
+                    </p>
+
+                    <span class="card-tag">
+                        UPCOMING
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACHIEVEMENTS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Achievements & Activities
+                </h2>
+
+                <p>
+                    Experiences that show learning beyond the classroom.
+                </p>
+
+            </div>
+
+
+            <div class="card-grid">
+
+
+                <div class="achievement-card">
+
+                    <div class="achievement-icon">
+                        🏆
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            School Competition
+                        </h3>
+
+                        <p>
+                            Participated in a school-level competition
+                            and presented an idea.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="achievement-card">
+
+                    <div class="achievement-icon">
+                        💻
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Workshop Participation
+                        </h3>
+
+                        <p>
+                            Explored a new topic through a workshop
+                            or learning event.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="achievement-card">
+
+                    <div class="achievement-icon">
+                        🔬
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Project Showcase
+                        </h3>
+
+                        <p>
+                            Shared a project and explained the
+                            learning behind it.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    My Journey So Far
+                </h2>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <strong>8</strong>
+
+                    <span>
+                        Skills Exploring
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>3</strong>
+
+                    <span>
+                        Projects
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>3</strong>
+
+                    <span>
+                        Activities
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>1</strong>
+
+                    <span>
+                        Career Exploring
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- READINESS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Portfolio Progress
+                </h2>
+
+                <p>
+                    Your portfolio grows as you learn and create.
+                </p>
+
+            </div>
+
+
+            <div class="readiness">
+
+                <div class="readiness-top">
+
+                    <h3>
+                        Portfolio Development
+                    </h3>
+
+                    <span>
+                        65%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div class="progress-fill"></div>
+
+                </div>
+
+
+                <p>
+                    Keep adding projects, skills, achievements and
+                    experiences as you continue your journey.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="cta">
+
+            <h2>
+                Your portfolio is growing with you.
+            </h2>
+
+            <p>
+                The next step is to understand your career readiness,
+                future study options and long-term direction.
+            </p>
+
+            <button onclick="continueJourney()">
+                Explore My Future →
+            </button>
+
+        </section>
+
+
+        <div class="note">
+            Your portfolio is a record of your growth.
+            It can change as your interests, skills and goals develop.
+        </div>
+
+
+    </main>
+
+
+    <div class="toast" id="toast"></div>
+
+
+    <script>
+
+        /* -------------------------------
+           CAREER
+        ------------------------------- */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const career =
+            params.get("career") || "Software Developer";
+
+
+        document.getElementById("careerTag")
+            .textContent =
+            "Exploring: " + career;
+
+
+        /* -------------------------------
+           NEXT PAGE
+        ------------------------------- */
+
+        function continueJourney() {
+
+            window.location.href =
+                "career-readiness.html?career=" +
+                encodeURIComponent(career);
+
+        }
+
+
+        /* -------------------------------
+           TOAST
+        ------------------------------- */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.style.display = "block";
+
+            setTimeout(function () {
+
+                toast.style.display = "none";
+
+            }, 2200);
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

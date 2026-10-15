@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ProSync — College Explorer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #14213d;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e5e9f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769ff;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .step {
+            font-size: 14px;
+            color: #667085;
+            font-weight: 600;
+        }
+
+        /* MAIN */
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 55px 0 70px;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 780px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769ff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            color: #667085;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* CAREER BAR */
+        .career-bar {
+            margin-top: 35px;
+            background: #14213d;
+            color: white;
+            padding: 20px 24px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .career-label {
+            color: #aab7ce;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .career-name {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .career-bar span:last-child {
+            font-size: 26px;
+        }
+
+        /* SECTION */
+        .section {
+            margin-top: 55px;
+        }
+
+        .section-heading {
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .section-heading p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* EDUCATION CARDS */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .education-card {
+            background: white;
+            border: 1px solid #e4e8ef;
+            border-radius: 15px;
+            padding: 22px;
+            transition: 0.2s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-3px);
+            border-color: #1769ff;
+            box-shadow: 0 10px 25px rgba(20, 33, 61, 0.07);
+        }
+
+        .education-icon {
+            font-size: 27px;
+            margin-bottom: 14px;
+        }
+
+        .education-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .education-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* LOCATION SELECTOR */
+        .explorer-box {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(20, 33, 61, 0.04);
+        }
+
+        .selector-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            height: 50px;
+            border: 1px solid #d5dbe5;
+            border-radius: 10px;
+            padding: 0 14px;
+            font-size: 14px;
+            color: #14213d;
+            background: white;
+            outline: none;
+        }
+
+        select:focus {
+            border-color: #1769ff;
+            box-shadow: 0 0 0 3px rgba(23, 105, 255, 0.1);
+        }
+
+        .find-btn {
+            margin-top: 24px;
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            background: #1769ff;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .find-btn:hover {
+            background: #0d57db;
+        }
+
+        /* RESULTS */
+        #results {
+            display: none;
+            margin-top: 45px;
+        }
+
+        .result-header {
+            margin-bottom: 20px;
+        }
+
+        .result-header h2 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .result-header p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .college-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .college-card {
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-radius: 16px;
+            padding: 23px;
+            transition: 0.2s;
+        }
+
+        .college-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(20, 33, 61, 0.07);
+        }
+
+        .college-icon {
+            width: 45px;
+            height: 45px;
+            background: #edf4ff;
+            color: #1769ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .college-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .college-location {
+            color: #667085;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .course-tag {
+            display: inline-block;
+            background: #f2f5f9;
+            color: #475467;
+            padding: 6px 9px;
+            border-radius: 7px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 3px 3px 0 0;
+        }
+
+        .college-link {
+            display: block;
+            margin-top: 17px;
+            color: #1769ff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* NOTE */
+        .note {
+            margin-top: 45px;
+            background: #f0f6ff;
+            border: 1px solid #d8e8ff;
+            border-radius: 14px;
+            padding: 18px 20px;
+            color: #4b5b75;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* CONTINUE */
+        .continue-area {
+            text-align: center;
+            margin-top: 45px;
+        }
+
+        .continue-btn {
+            background: #14213d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 25px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #14213d;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
+            z-index: 100;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .education-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .college-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .step {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+                padding-top: 35px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .education-grid,
+            .college-grid,
+            .selector-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-bar {
+                align-items: flex-start;
+            }
+
+            .explorer-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo-area">
+            <div class="logo">P</div>
+            <span>ProSync</span>
+        </div>
+
+        <div class="step">
+            College Explorer · Step 6
+        </div>
+    </nav>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="eyebrow">🎓 COLLEGE EXPLORER</div>
+
+            <h1>Explore education paths for your future.</h1>
+
+            <p>
+                Understand which courses and colleges you may consider
+                based on the career you are exploring.
+            </p>
+        </section>
+
+
+        <!-- SELECTED CAREER -->
+        <div class="career-bar">
+            <div>
+                <div class="career-label">Career you are exploring</div>
+                <div class="career-name" id="careerName">
+                    Software Developer
+                </div>
+            </div>
+
+            <span>🎯</span>
+        </div>
+
+
+        <!-- EDUCATION PATH -->
+        <section class="section">
+
+            <div class="section-heading">
+                <h2>Education paths you can explore</h2>
+                <p>
+                    There can be multiple routes towards the same career.
+                </p>
+            </div>
+
+            <div class="education-grid">
+
+                <div class="education-card">
+                    <div class="education-icon">💻</div>
+                    <h3>B.E / B.Tech</h3>
+                    <p>
+                        Engineering and technology degree pathways.
+                    </p>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">🔬</div>
+                    <h3>B.Sc</h3>
+                    <p>
+                        Science and technology-focused undergraduate study.
+                    </p>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">🧑‍💻</div>
+                    <h3>BCA</h3>
+                    <p>
+                        Computer applications and software-focused education.
+                    </p>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">🎓</div>
+                    <h3>Diploma / Polytechnic</h3>
+                    <p>
+                        Practical and skill-oriented technical pathways.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOCATION -->
+        <section class="section">
+
+            <div class="section-heading">
+                <h2>Find colleges to explore</h2>
+                <p>
+                    Select your preferred state and district to discover example colleges.
+                </p>
+            </div>
+
+            <div class="explorer-box">
+
+                <div class="selector-grid">
+
+                    <div class="field">
+                        <label for="state">Select State</label>
+
+                        <select id="state">
+                            <option value="">Choose a state</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                        </select>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="district">Select District</label>
+
+                        <select id="district">
+                            <option value="">Choose a district</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="find-btn" onclick="findColleges()">
+                    Find Colleges →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTS -->
+        <section id="results">
+
+            <div class="result-header">
+                <h2>Colleges you may consider</h2>
+
+                <p id="resultText">
+                    Explore these institutions and verify current courses and admissions.
+                </p>
+            </div>
+
+
+            <div class="college-grid" id="collegeGrid">
+
+                <!-- CARDS WILL APPEAR HERE -->
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTE -->
+        <div class="note">
+            <strong>💡 ProSync Note:</strong>
+            College suggestions are meant to help you start exploring.
+            Course availability, eligibility, fees and admissions can change,
+            so always check the official college website before making decisions.
+        </div>
+
+
+        <!-- CONTINUE -->
+        <div class="continue-area">
+            <button class="continue-btn" onclick="continueJourney()">
+                Build My Personal Roadmap →
+            </button>
+        </div>
+
+    </main>
+
+
+    <div class="toast" id="toast"></div>
+
+
+    <script>
+
+        /* --------------------------------
+           CAREER FROM PREVIOUS PAGE
+        -------------------------------- */
+
+        const params = new URLSearchParams(window.location.search);
+
+        const career =
+            params.get("career") || "Software Developer";
+
+        document.getElementById("careerName").textContent = career;
+
+
+        /* --------------------------------
+           DISTRICT DATA
+        -------------------------------- */
+
+        const districts = {
+
+            "Tamil Nadu": [
+                "Chennai",
+                "Coimbatore",
+                "Salem",
+                "Madurai",
+                "Tiruchirappalli",
+                "Erode",
+                "Tiruppur"
+            ],
+
+            "Karnataka": [
+                "Bengaluru",
+                "Mysuru",
+                "Mangaluru",
+                "Hubballi"
+            ],
+
+            "Kerala": [
+                "Thiruvananthapuram",
+                "Kochi",
+                "Kozhikode",
+                "Thrissur"
+            ],
+
+            "Telangana": [
+                "Hyderabad",
+                "Warangal",
+                "Nizamabad"
+            ],
+
+            "Maharashtra": [
+                "Mumbai",
+                "Pune",
+                "Nagpur",
+                "Nashik"
+            ]
+
+        };
+
+
+        const stateSelect =
+            document.getElementById("state");
+
+        const districtSelect =
+            document.getElementById("district");
+
+
+        stateSelect.addEventListener("change", function () {
+
+            const selectedState = this.value;
+
+            districtSelect.innerHTML =
+                '<option value="">Choose a district</option>';
+
+            if (districts[selectedState]) {
+
+                districts[selectedState].forEach(function (district) {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = district;
+                    option.textContent = district;
+
+                    districtSelect.appendChild(option);
+
+                });
+
+            }
+
+        });
+
+
+        /* --------------------------------
+           COLLEGE DATA
+        -------------------------------- */
+
+        const colleges = {
+
+            "Tamil Nadu": {
+
+                "Chennai": [
+                    {
+                        name: "Anna University",
+                        courses: ["Engineering", "Technology", "Science"]
+                    },
+                    {
+                        name: "IIT Madras",
+                        courses: ["Engineering", "Science", "Technology"]
+                    },
+                    {
+                        name: "SRM Institute of Science and Technology",
+                        courses: ["Engineering", "Technology", "Management"]
+                    }
+                ],
+
+                "Coimbatore": [
+                    {
+                        name: "PSG College of Technology",
+                        courses: ["Engineering", "Technology", "Science"]
+                    },
+                    {
+                        name: "Government College of Technology",
+                        courses: ["Engineering", "Technology"]
+                    },
+                    {
+                        name: "Kumaraguru College of Technology",
+                        courses: ["Engineering", "Technology", "Management"]
+                    }
+                ],
+
+                "Salem": [
+                    {
+                        name: "Government College of Engineering, Salem",
+                        courses: ["Engineering", "Technology"]
+                    },
+                    {
+                        name: "Sona College of Technology",
+                        courses: ["Engineering", "Technology", "Management"]
+                    },
+                    {
+                        name: "Vinayaka Mission's Research Foundation",
+                        courses: ["Engineering", "Science", "Health"]
+                    }
+                ],
+
+                "Madurai": [
+                    {
+                        name: "Thiagarajar College of Engineering",
+                        courses: ["Engineering", "Technology", "Science"]
+                    },
+                    {
+                        name: "Madurai Kamaraj University",
+                        courses: ["Science", "Arts", "Commerce"]
+                    }
+                ]
+
+            },
+
+
+            "Karnataka": {
+
+                "Bengaluru": [
+                    {
+                        name: "Indian Institute of Science",
+                        courses: ["Science", "Research", "Technology"]
+                    },
+                    {
+                        name: "RV College of Engineering",
+                        courses: ["Engineering", "Technology"]
+                    },
+                    {
+                        name: "Bangalore Institute of Technology",
+                        courses: ["Engineering", "Technology"]
+                    }
+                ],
+
+                "Mysuru": [
+                    {
+                        name: "University of Mysore",
+                        courses: ["Science", "Arts", "Commerce"]
+                    },
+                    {
+                        name: "JSS Science and Technology University",
+                        courses: ["Engineering", "Science", "Technology"]
+                    }
+                ]
+
+            },
+
+
+            "Kerala": {
+
+                "Thiruvananthapuram": [
+                    {
+                        name: "University of Kerala",
+                        courses: ["Science", "Arts", "Commerce"]
+                    },
+                    {
+                        name: "College of Engineering Trivandrum",
+                        courses: ["Engineering", "Technology"]
+                    }
+                ],
+
+                "Kochi": [
+                    {
+                        name: "Cochin University of Science and Technology",
+                        courses: ["Science", "Engineering", "Technology"]
+                    },
+                    {
+                        name: "Rajagiri School of Engineering & Technology",
+                        courses: ["Engineering", "Technology"]
+                    }
+                ]
+
+            },
+
+
+            "Telangana": {
+
+                "Hyderabad": [
+                    {
+                        name: "University of Hyderabad",
+                        courses: ["Science", "Arts", "Research"]
+                    },
+                    {
+                        name: "International Institute of Information Technology Hyderabad",
+                        courses: ["Technology", "Computer Science", "Research"]
+                    }
+                ]
+
+            },
+
+
+            "Maharashtra": {
+
+                "Mumbai": [
+                    {
+                        name: "University of Mumbai",
+                        courses: ["Science", "Arts", "Commerce"]
+                    },
+                    {
+                        name: "Indian Institute of Technology Bombay",
+                        courses: ["Engineering", "Science", "Technology"]
+                    }
+                ],
+
+                "Pune": [
+                    {
+                        name: "College of Engineering Pune",
+                        courses: ["Engineering", "Technology"]
+                    },
+                    {
+                        name: "Savitribai Phule Pune University",
+                        courses: ["Science", "Arts", "Commerce"]
+                    }
+                ]
+
+            }
+
+        };
+
+
+        /* --------------------------------
+           FIND COLLEGES
+        -------------------------------- */
+
+        function findColleges() {
+
+            const state = stateSelect.value;
+            const district = districtSelect.value;
+
+            if (!state || !district) {
+
+                showToast(
+                    "Please select both state and district."
+                );
+
+                return;
+            }
+
+
+            const resultArea =
+                document.getElementById("results");
+
+            const collegeGrid =
+                document.getElementById("collegeGrid");
+
+            const resultText =
+                document.getElementById("resultText");
+
+
+            collegeGrid.innerHTML = "";
+
+
+            const selectedColleges =
+                colleges[state]?.[district] || [];
+
+
+            resultText.textContent =
+                `${selectedColleges.length} example colleges to explore in ${district}, ${state}.`;
+
+
+            if (selectedColleges.length === 0) {
+
+                collegeGrid.innerHTML = `
+          <div class="college-card">
+            <div class="college-icon">🔎</div>
+            <h3>More colleges coming soon</h3>
+            <p class="college-location">
+              ProSync can expand this database with more institutions.
+            </p>
+          </div>
+        `;
+
+            } else {
+
+                selectedColleges.forEach(function (college) {
+
+                    const card =
+                        document.createElement("div");
+
+                    card.className = "college-card";
+
+
+                    let tags = "";
+
+                    college.courses.forEach(function (course) {
+
+                        tags += `
+              <span class="course-tag">
+                ${course}
+              </span>
+            `;
+
+                    });
+
+
+                    card.innerHTML = `
+
+            <div class="college-icon">🎓</div>
+
+            <h3>${college.name}</h3>
+
+            <div class="college-location">
+              ${district}, ${state}
+            </div>
+
+            <div>
+              ${tags}
+            </div>
+
+            <span
+              class="college-link"
+              onclick="showToast('College details can be connected to the official website in the next version.')"
+            >
+              Explore College →
+            </span>
+
+          `;
+
+
+                    collegeGrid.appendChild(card);
+
+                });
+
+            }
+
+
+            resultArea.style.display = "block";
+
+            resultArea.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* --------------------------------
+           CONTINUE
+        -------------------------------- */
+
+        function continueJourney() {
+
+            window.location.href =
+                "roadmap.html?career=" +
+                encodeURIComponent(career);
+
+        }
+
+
+        /* --------------------------------
+           TOAST
+        -------------------------------- */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.style.display = "block";
+
+            setTimeout(function () {
+                toast.style.display = "none";
+            }, 2500);
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

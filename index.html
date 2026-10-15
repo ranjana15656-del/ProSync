@@ -1,0 +1,598 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ProSync | Sign In</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9fc;
+            color: #101828;
+            min-height: 100vh;
+        }
+
+        nav {
+            width: 100%;
+            height: 76px;
+            background: #fff;
+            border-bottom: 1px solid #e7ebf2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #155eef;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-text {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .nav-signin {
+            border: 1px solid #d0d5dd;
+            background: white;
+            color: #344054;
+            padding: 10px 18px;
+            border-radius: 9px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        main {
+            min-height: calc(100vh - 76px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1120px;
+            display: grid;
+            grid-template-columns: 1fr 430px;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .left-content {
+            max-width: 620px;
+        }
+
+        .small-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eef4ff;
+            color: #155eef;
+            border: 1px solid #dbe7ff;
+            padding: 8px 13px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: #155eef;
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+            color: #101828;
+        }
+
+        h1 span {
+            color: #155eef;
+        }
+
+        .description {
+            color: #667085;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 560px;
+            margin-bottom: 32px;
+        }
+
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .highlight {
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 10px;
+            padding: 11px 15px;
+            color: #475467;
+            font-size: 14px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 20px;
+            padding: 34px;
+            box-shadow: 0 20px 50px rgba(16, 24, 40, 0.08);
+        }
+
+        .card-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: #155eef;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            font-size: 27px;
+            margin-bottom: 8px;
+            color: #101828;
+        }
+
+        .card-subtitle {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #344054;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            padding: 0 14px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #155eef;
+            box-shadow: 0 0 0 3px rgba(21, 94, 239, 0.10);
+        }
+
+        .password-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .password-row label {
+            margin-bottom: 0;
+        }
+
+        .forgot {
+            font-size: 12px;
+            color: #155eef;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .signin-btn {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 9px;
+            background: #155eef;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .signin-btn:hover {
+            background: #004eeb;
+        }
+
+        .signin-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 24px 0;
+            color: #98a2b3;
+            font-size: 12px;
+        }
+
+        .line {
+            height: 1px;
+            background: #eaecf0;
+            flex: 1;
+        }
+
+        .create-btn {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            background: white;
+            color: #344054;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .create-btn:hover {
+            background: #f9fafb;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 12px;
+            color: #98a2b3;
+            line-height: 1.5;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translate(-50%, 100px);
+            background: #101828;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 9px;
+            font-size: 14px;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                gap: 40px;
+            }
+
+            .left-content {
+                text-align: center;
+                margin: auto;
+            }
+
+            h1 {
+                font-size: 43px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .highlights {
+                justify-content: center;
+            }
+
+            .nav-text {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+            nav {
+                padding: 0 20px;
+            }
+
+            .brand {
+                font-size: 19px;
+            }
+
+            .logo {
+                width: 38px;
+                height: 38px;
+            }
+
+            .nav-signin {
+                display: none;
+            }
+
+            main {
+                padding: 40px 16px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .card {
+                padding: 25px 20px;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="brand">
+            <div class="logo">P</div>
+            <span>ProSync</span>
+        </div>
+
+        <div class="nav-right">
+            <span class="nav-text">Already have an account?</span>
+            <button class="nav-signin" onclick="focusEmail()">
+                Sign In
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+
+            <section class="left-content">
+                <div class="small-label">
+                    <span class="dot"></span>
+                    Your journey starts here
+                </div>
+
+                <h1>
+                    Build your future<br>
+                    with <span>ProSync.</span>
+                </h1>
+
+                <p class="description">
+                    A simple platform to discover opportunities, develop your
+                    skills, build your profile and prepare for your future career.
+                </p>
+
+                <div class="highlights">
+                    <div class="highlight">Explore Opportunities</div>
+                    <div class="highlight">Build Your Skills</div>
+                    <div class="highlight">Create Your Profile</div>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-logo">P</div>
+
+                <h2>Welcome back</h2>
+
+                <p class="card-subtitle">
+                    Sign in to continue your ProSync journey.
+                </p>
+
+                <form id="loginForm">
+
+                    <div class="input-group">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="password-row">
+                            <label for="password">Password</label>
+                            <span class="forgot" onclick="forgotPassword()">
+                                Forgot password?
+                            </span>
+                        </div>
+
+                        <input type="password" id="password" placeholder="Enter your password"
+                            autocomplete="current-password" required>
+                    </div>
+
+                    <button class="signin-btn" id="signinBtn" type="submit">
+                        Sign In
+                    </button>
+
+                </form>
+
+                <div class="divider">
+                    <div class="line"></div>
+                    <span>OR</span>
+                    <div class="line"></div>
+                </div>
+
+                <button class="create-btn" onclick="createAccount()">
+                    Create a new account
+                </button>
+
+                <p class="footer-note">
+                    By continuing, you agree to ProSync's Terms and Privacy Policy.
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+    <!-- Your existing Firebase configuration -->
+    <script src="firebase-config.js"></script>
+
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const signinBtn = document.getElementById("signinBtn");
+
+        let toastTimer;
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+
+            toast.textContent = message;
+            toast.classList.add("show");
+
+            clearTimeout(toastTimer);
+
+            toastTimer = setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
+        }
+
+        function focusEmail() {
+            document.getElementById("email").focus();
+        }
+
+        // If the user is already signed in, open the dashboard.
+        if (typeof auth !== "undefined" && auth) {
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    window.location.replace("dashboard.html");
+                }
+            });
+        }
+
+        loginForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            if (typeof auth === "undefined" || !auth) {
+                showToast("Firebase is not configured correctly.");
+                console.error("Firebase auth is unavailable. Check firebase-config.js.");
+                return;
+            }
+
+            signinBtn.disabled = true;
+            signinBtn.textContent = "Signing in...";
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+
+                showToast("Login successful!");
+
+                setTimeout(() => {
+                    window.location.replace("dashboard.html");
+                }, 500);
+
+            } catch (error) {
+                console.error("Firebase login error:", error.code, error.message);
+
+                if (
+                    error.code === "auth/invalid-credential" ||
+                    error.code === "auth/wrong-password" ||
+                    error.code === "auth/user-not-found"
+                ) {
+                    showToast("Wrong email or password.");
+                } else if (error.code === "auth/invalid-email") {
+                    showToast("Please enter a valid email.");
+                } else if (error.code === "auth/too-many-requests") {
+                    showToast("Too many attempts. Try again later.");
+                } else if (error.code === "auth/network-request-failed") {
+                    showToast("Network error. Check your internet.");
+                } else {
+                    showToast("Login failed. Please try again.");
+                }
+
+            } finally {
+                signinBtn.disabled = false;
+                signinBtn.textContent = "Sign In";
+            }
+        });
+
+        async function forgotPassword() {
+            const email = document.getElementById("email").value.trim();
+
+            if (!email) {
+                showToast("Enter your email address first.");
+                document.getElementById("email").focus();
+                return;
+            }
+
+            if (typeof auth === "undefined" || !auth) {
+                showToast("Firebase is not configured correctly.");
+                return;
+            }
+
+            try {
+                await auth.sendPasswordResetEmail(email);
+                showToast("Password reset email sent. Check your inbox.");
+            } catch (error) {
+                console.error("Password reset error:", error.code);
+                showToast("Unable to send reset email. Check your email.");
+            }
+        }
+
+        function createAccount() {
+            window.location.href = "signup.html";
+        }
+    </script>
+
+</body>
+
+</html>
+```

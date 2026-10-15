@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Readiness | ProSync</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, Arial, sans-serif;
+        }
+
+        body {
+            background: #f6f8fc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 72px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e9f2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 800;
+            color: #172b4d;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #1769e0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .step {
+            color: #667085;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* MAIN */
+        .container {
+            width: 86%;
+            max-width: 1180px;
+            margin: auto;
+        }
+
+        .hero {
+            padding: 70px 0 35px;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769e0;
+            padding: 7px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            line-height: 1.15;
+            color: #172b4d;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #667085;
+            font-size: 17px;
+        }
+
+        /* CAREER BAR */
+        .career-bar {
+            background: #172b4d;
+            color: white;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0 42px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .career-bar small {
+            color: #b9c7dd;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .career-name {
+            font-size: 20px;
+            font-weight: 750;
+        }
+
+        .status {
+            background: #ffffff18;
+            border: 1px solid #ffffff25;
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+
+        /* SECTION */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 {
+            color: #172b4d;
+            font-size: 27px;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #667085;
+        }
+
+        /* READINESS GRID */
+        .readiness-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .readiness-card {
+            background: white;
+            border: 1px solid #e4e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            transition: 0.2s;
+        }
+
+        .readiness-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(23, 43, 77, 0.08);
+        }
+
+        .icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: #eef4ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .readiness-card h3 {
+            color: #172b4d;
+            margin-bottom: 7px;
+            font-size: 18px;
+        }
+
+        .readiness-card p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* PATH */
+        .path {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .path-card {
+            background: white;
+            border: 1px solid #e4e8f0;
+            border-radius: 15px;
+            padding: 22px;
+            position: relative;
+        }
+
+        .number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #1769e0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .path-card h3 {
+            font-size: 16px;
+            color: #172b4d;
+            margin-bottom: 6px;
+        }
+
+        .path-card p {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        /* STUDY + CAREER */
+        .future-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .future-card {
+            background: white;
+            border: 1px solid #e4e8f0;
+            border-radius: 18px;
+            padding: 28px;
+        }
+
+        .future-card h3 {
+            font-size: 21px;
+            color: #172b4d;
+            margin-bottom: 10px;
+        }
+
+        .future-card>p {
+            color: #667085;
+            margin-bottom: 20px;
+        }
+
+        .future-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .future-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #eaf2ff;
+            color: #1769e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .future-item strong {
+            display: block;
+            color: #253858;
+            font-size: 14px;
+        }
+
+        .future-item span {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            background: white;
+            border: 1px solid #e4e8f0;
+            border-radius: 18px;
+            padding: 28px;
+        }
+
+        .check-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 15px 0;
+            border-bottom: 1px solid #edf0f5;
+            cursor: pointer;
+        }
+
+        .check-row:last-child {
+            border-bottom: none;
+        }
+
+        .check-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #b9c2d0;
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .check-row.completed .check-box {
+            background: #1769e0;
+            border-color: #1769e0;
+        }
+
+        .check-row.completed span {
+            text-decoration: line-through;
+            color: #98a2b3;
+        }
+
+        /* NEXT STEPS */
+        .next-box {
+            background: #eef4ff;
+            border: 1px solid #d8e6ff;
+            border-radius: 18px;
+            padding: 28px;
+        }
+
+        .next-box h3 {
+            color: #172b4d;
+            margin-bottom: 16px;
+            font-size: 21px;
+        }
+
+        .next-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .next-step {
+            background: white;
+            border-radius: 13px;
+            padding: 18px;
+        }
+
+        .next-step strong {
+            display: block;
+            color: #172b4d;
+            margin-bottom: 5px;
+        }
+
+        .next-step span {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        /* FINAL */
+        .final-box {
+            background: #172b4d;
+            color: white;
+            border-radius: 22px;
+            padding: 45px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .final-box h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .final-box p {
+            color: #c6d1e2;
+            max-width: 650px;
+            margin: 0 auto 24px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .primary {
+            background: #1769e0;
+            color: white;
+        }
+
+        .secondary {
+            background: white;
+            color: #172b4d;
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #172b4d;
+            color: white;
+            padding: 13px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(15px);
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+
+            .readiness-grid,
+            .path {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .future-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .next-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .step {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .career-bar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .readiness-grid,
+            .path {
+                grid-template-columns: 1fr;
+            }
+
+            .final-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="logo">P</div>
+            ProSync
+        </div>
+
+        <div class="step">
+            Career Readiness · Final Step
+        </div>
+    </nav>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-label">🚀 Your Future Journey</div>
+
+            <h1>Prepare for what comes next.</h1>
+
+            <p>
+                Build the skills, knowledge, confidence and experience
+                you can carry into your future studies and career journey.
+            </p>
+        </section>
+
+
+        <!-- CAREER -->
+        <div class="career-bar">
+            <div>
+                <small>Career you are exploring</small>
+                <div class="career-name" id="careerName">Your Career</div>
+            </div>
+
+            <div class="status">
+                ✓ Journey in Progress
+            </div>
+        </div>
+
+
+        <!-- CAREER READINESS -->
+        <section class="section">
+
+            <div class="section-title">
+                <h2>🎯 Career Readiness</h2>
+                <p>
+                    Being career-ready starts long before your first job.
+                </p>
+            </div>
+
+            <div class="readiness-grid">
+
+                <div class="readiness-card">
+                    <div class="icon">🧠</div>
+                    <h3>Skills</h3>
+                    <p>
+                        Develop communication, problem solving,
+                        creativity, teamwork and career-related skills.
+                    </p>
+                </div>
+
+                <div class="readiness-card">
+                    <div class="icon">🛠️</div>
+                    <h3>Projects</h3>
+                    <p>
+                        Turn what you learn into small projects
+                        that demonstrate your curiosity and abilities.
+                    </p>
+                </div>
+
+                <div class="readiness-card">
+                    <div class="icon">💬</div>
+                    <h3>Communication</h3>
+                    <p>
+                        Practise explaining your ideas, presenting your work
+                        and working effectively with others.
+                    </p>
+                </div>
+
+                <div class="readiness-card">
+                    <div class="icon">🏆</div>
+                    <h3>Opportunities</h3>
+                    <p>
+                        Explore competitions, workshops, hackathons,
+                        clubs and other student opportunities.
+                    </p>
+                </div>
+
+                <div class="readiness-card">
+                    <div class="icon">📁</div>
+                    <h3>Portfolio</h3>
+                    <p>
+                        Keep track of projects, activities, achievements
+                        and the skills you continue to develop.
+                    </p>
+                </div>
+
+                <div class="readiness-card">
+                    <div class="icon">🌎</div>
+                    <h3>Career Awareness</h3>
+                    <p>
+                        Understand education pathways, industries,
+                        skills and the changing world of work.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- READINESS PATH -->
+        <section class="section">
+
+            <div class="section-title">
+                <h2>🧭 Your Readiness Path</h2>
+                <p>
+                    A simple way to continue developing yourself.
+                </p>
+            </div>
+
+            <div class="path">
+
+                <div class="path-card">
+                    <div class="number">1</div>
+                    <h3>Explore</h3>
+                    <p>
+                        Understand careers, education and opportunities.
+                    </p>
+                </div>
+
+                <div class="path-card">
+                    <div class="number">2</div>
+                    <h3>Learn</h3>
+                    <p>
+                        Build knowledge and skills step by step.
+                    </p>
+                </div>
+
+                <div class="path-card">
+                    <div class="number">3</div>
+                    <h3>Build</h3>
+                    <p>
+                        Apply your learning through projects and activities.
+                    </p>
+                </div>
+
+                <div class="path-card">
+                    <div class="number">4</div>
+                    <h3>Showcase</h3>
+                    <p>
+                        Record your work and progress in your portfolio.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- FUTURE STUDY + CAREER -->
+        <section class="section">
+
+            <div class="future-grid">
+
+                <!-- STUDY -->
+                <div class="future-card">
+
+                    <h3>🎓 Future Study</h3>
+
+                    <p>
+                        Your education journey can evolve as you discover
+                        your interests and goals.
+                    </p>
+
+                    <div class="future-list">
+
+                        <div class="future-item">
+                            <div class="check">✓</div>
+                            <div>
+                                <strong>Strengthen School Foundations</strong>
+                                <span>Build strong subject knowledge and learning habits.</span>
+                            </div>
+                        </div>
+
+                        <div class="future-item">
+                            <div class="check">✓</div>
+                            <div>
+                                <strong>Explore Courses</strong>
+                                <span>Understand degrees, diplomas and different study paths.</span>
+                            </div>
+                        </div>
+
+                        <div class="future-item">
+                            <div class="check">✓</div>
+                            <div>
+                                <strong>Choose Your Path</strong>
+                                <span>Compare education options based on your interests.</span>
+                            </div>
+                        </div>
+
+                        <div class="future-item">
+                            <div class="check">✓</div>
+                            <div>
+                                <strong>Keep Learning</strong>
+                                <span>Continue developing skills beyond formal education.</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- CAREER -->
+                <div class="future-card">
+
+                    <h3>🚀 Future Career</h3>
+
+                    <p>
+                        Your career direction can grow and change as you
+                        learn more about yourself and the world.
+                    </p>
+
+                    <div class="future-list">
+
+                        <div class="future-item">
+                            <div class="check">✓</div>
+                            <div>
+                                <strong>Build Relevant Skills</strong>
+                                <span>Develop skills connected to your chosen career area.</span>
+                            </div>
+                        </div>
+
+                        <div class="future-item">
+                            <div class="check">✓</div>
+                            <div>
+                                <strong>Explore Industries</strong>
+                                <span>Learn how different industries use your skills.</span>
+                            </div>
+                        </div>
+
+                        <div class="future-item">
+                            <div class="check">✓</div>
+                            <div>
+                                <strong>Gain Experience</strong>
+                                <span>Use projects, competitions and activities to practise.</span>
+                            </div>
+                        </div>
+
+                        <div class="future-item">
+                            <div class="check">✓</div>
+                            <div>
+                                <strong>Keep Your Options Open</strong>
+                                <span>Discover new possibilities as your interests develop.</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CHECKLIST -->
+        <section class="section">
+
+            <div class="section-title">
+                <h2>✅ My Readiness Checklist</h2>
+                <p>
+                    Mark the areas you have started working on.
+                </p>
+            </div>
+
+            <div class="checklist">
+
+                <div class="check-row">
+                    <div class="check-box"></div>
+                    <span>I understand the career I am exploring.</span>
+                </div>
+
+                <div class="check-row">
+                    <div class="check-box"></div>
+                    <span>I know some skills I want to develop.</span>
+                </div>
+
+                <div class="check-row">
+                    <div class="check-box"></div>
+                    <span>I have started learning or practising a skill.</span>
+                </div>
+
+                <div class="check-row">
+                    <div class="check-box"></div>
+                    <span>I have built or started a project.</span>
+                </div>
+
+                <div class="check-row">
+                    <div class="check-box"></div>
+                    <span>I have explored student opportunities.</span>
+                </div>
+
+                <div class="check-row">
+                    <div class="check-box"></div>
+                    <span>I am keeping my portfolio updated.</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- NEXT 3 STEPS -->
+        <section class="section">
+
+            <div class="next-box">
+
+                <h3>📌 Your Next 3 Steps</h3>
+
+                <div class="next-steps">
+
+                    <div class="next-step">
+                        <strong>01 · Keep Learning</strong>
+                        <span>
+                            Choose one useful skill and continue practising it.
+                        </span>
+                    </div>
+
+                    <div class="next-step">
+                        <strong>02 · Keep Building</strong>
+                        <span>
+                            Create projects that help you apply what you learn.
+                        </span>
+                    </div>
+
+                    <div class="next-step">
+                        <strong>03 · Keep Exploring</strong>
+                        <span>
+                            Revisit careers, courses and opportunities as you grow.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- FINAL -->
+        <section class="final-box">
+
+            <h2>🎉 Your ProSync Journey Has Begun</h2>
+
+            <p>
+                You now have a clearer path from discovering your interests
+                to exploring careers, developing skills, building projects
+                and preparing for future study and career opportunities.
+            </p>
+
+            <div class="buttons">
+
+                <button class="secondary" onclick="goToPortfolio()">
+                    ← View My Portfolio
+                </button>
+
+                <button class="primary" onclick="exploreAgain()">
+                    Explore More Careers →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div class="toast" id="toast">
+        Great! Keep building your journey 🚀
+    </div>
+
+
+    <script>
+
+        // Get selected career from URL
+        const params = new URLSearchParams(window.location.search);
+
+        const career =
+            params.get("career") || "Career Exploration";
+
+        document.getElementById("careerName").textContent = career;
+
+
+        // Checklist
+        const rows = document.querySelectorAll(".check-row");
+
+        rows.forEach(row => {
+
+            row.addEventListener("click", () => {
+
+                row.classList.toggle("completed");
+
+                const box = row.querySelector(".check-box");
+
+                if (row.classList.contains("completed")) {
+                    box.textContent = "✓";
+                    showToast("Progress updated ✓");
+                } else {
+                    box.textContent = "";
+                }
+
+            });
+
+        });
+
+
+        // Toast
+        function showToast(message) {
+
+            const toast = document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.classList.add("show");
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 1800);
+        }
+
+
+        // Portfolio
+        function goToPortfolio() {
+
+            window.location.href =
+                "portfolio.html?career=" +
+                encodeURIComponent(career);
+
+        }
+
+
+        // Explore careers again
+        function exploreAgain() {
+
+            window.location.href = "explore.html";
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

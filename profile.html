@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ProSync | Get to Know You</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f6f8fc;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 72px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e9f2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #14213d;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769e0;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .step {
+            font-size: 14px;
+            color: #667085;
+            font-weight: 500;
+        }
+
+        /* MAIN */
+        .container {
+            width: min(900px, 92%);
+            margin: 45px auto 70px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .heading .label {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769e0;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .heading h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+            color: #14213d;
+        }
+
+        .heading p {
+            color: #667085;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            border: 1px solid #e5e9f2;
+            border-radius: 18px;
+            padding: 32px;
+            margin-bottom: 22px;
+            box-shadow: 0 8px 25px rgba(20, 33, 61, 0.05);
+        }
+
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #14213d;
+            margin-bottom: 7px;
+        }
+
+        .section-description {
+            color: #7a8499;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        /* INPUT */
+        .input-group {
+            margin-bottom: 5px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 9px;
+            color: #344054;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid #d8deea;
+            border-radius: 10px;
+            padding: 13px 14px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+            color: #172033;
+            background: #fff;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #1769e0;
+            box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            line-height: 1.5;
+        }
+
+        /* CHIPS */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            border: 1px solid #d8deea;
+            background: #ffffff;
+            color: #344054;
+            padding: 11px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .chip:hover {
+            border-color: #1769e0;
+            color: #1769e0;
+            background: #f4f8ff;
+        }
+
+        .chip.selected {
+            background: #1769e0;
+            color: white;
+            border-color: #1769e0;
+        }
+
+        /* HELPER */
+        .helper {
+            margin-top: 12px;
+            color: #98a2b3;
+            font-size: 13px;
+        }
+
+        /* BUTTON */
+        .bottom-action {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .continue-btn {
+            border: none;
+            background: #1769e0;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .continue-btn:hover {
+            background: #1258bf;
+            transform: translateY(-1px);
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background: #14213d;
+            color: white;
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 20;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .heading h1 {
+                font-size: 28px;
+            }
+
+            .card {
+                padding: 23px;
+            }
+
+            .bottom-action {
+                justify-content: stretch;
+            }
+
+            .continue-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="logo">P</div>
+            ProSync
+        </div>
+
+        <div class="step">
+            Profile Setup · Step 2 of 3
+        </div>
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <div class="heading">
+            <div class="label">Get to Know You</div>
+
+            <h1>Tell us about yourself.</h1>
+
+            <p>
+                Help ProSync understand your interests, strengths, hobbies and goals
+                so we can personalize your future exploration.
+            </p>
+        </div>
+
+
+        <!-- PERSONAL DETAILS -->
+        <section class="card">
+
+            <div class="section-title">Personal Details</div>
+
+            <div class="section-description">
+                Start with a little information about you.
+            </div>
+
+            <div class="input-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Enter your name" />
+            </div>
+
+        </section>
+
+
+        <!-- WHAT YOU ENJOY -->
+        <section class="card">
+
+            <div class="section-title">What do you enjoy?</div>
+
+            <div class="section-description">
+                Select the activities you naturally enjoy.
+            </div>
+
+            <div class="chips" data-group="enjoy">
+
+                <div class="chip">Creating things</div>
+                <div class="chip">Solving problems</div>
+                <div class="chip">Helping people</div>
+                <div class="chip">Learning new things</div>
+                <div class="chip">Exploring new ideas</div>
+                <div class="chip">Working with people</div>
+                <div class="chip">Building things</div>
+                <div class="chip">Leading activities</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERESTS -->
+        <section class="card">
+
+            <div class="section-title">Your Interests</div>
+
+            <div class="section-description">
+                Which areas are you curious about?
+            </div>
+
+            <div class="chips" data-group="interests">
+
+                <div class="chip">Technology</div>
+                <div class="chip">Science</div>
+                <div class="chip">Medicine</div>
+                <div class="chip">Business</div>
+                <div class="chip">Design</div>
+                <div class="chip">Arts & Media</div>
+                <div class="chip">Sports</div>
+                <div class="chip">Law</div>
+                <div class="chip">Education</div>
+                <div class="chip">Entrepreneurship</div>
+                <div class="chip">Fashion</div>
+                <div class="chip">Architecture</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOBBIES -->
+        <section class="card">
+
+            <div class="section-title">Your Hobbies</div>
+
+            <div class="section-description">
+                Tell us what you like doing in your free time.
+            </div>
+
+            <div class="chips" data-group="hobbies">
+
+                <div class="chip">Reading</div>
+                <div class="chip">Drawing</div>
+                <div class="chip">Writing</div>
+                <div class="chip">Coding</div>
+                <div class="chip">Music</div>
+                <div class="chip">Sports</div>
+                <div class="chip">Photography</div>
+                <div class="chip">Gaming</div>
+                <div class="chip">Making things</div>
+                <div class="chip">Travelling</div>
+
+            </div>
+
+            <div class="helper">
+                You can select more than one.
+            </div>
+
+        </section>
+
+
+        <!-- STRENGTHS -->
+        <section class="card">
+
+            <div class="section-title">What are you good at?</div>
+
+            <div class="section-description">
+                Choose the strengths that describe you.
+            </div>
+
+            <div class="chips" data-group="strengths">
+
+                <div class="chip">Problem Solving</div>
+                <div class="chip">Creativity</div>
+                <div class="chip">Communication</div>
+                <div class="chip">Teamwork</div>
+                <div class="chip">Leadership</div>
+                <div class="chip">Organisation</div>
+                <div class="chip">Critical Thinking</div>
+                <div class="chip">Public Speaking</div>
+                <div class="chip">Writing</div>
+                <div class="chip">Design</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FUTURE EXPLORATION -->
+        <section class="card">
+
+            <div class="section-title">What would you like to explore?</div>
+
+            <div class="section-description">
+                Tell us about the areas you would like to discover in the future.
+            </div>
+
+            <div class="chips" data-group="explore">
+
+                <div class="chip">Technology Careers</div>
+                <div class="chip">Medical Careers</div>
+                <div class="chip">Creative Careers</div>
+                <div class="chip">Business Careers</div>
+                <div class="chip">Engineering</div>
+                <div class="chip">Science</div>
+                <div class="chip">Design</div>
+                <div class="chip">Law</div>
+                <div class="chip">Sports Careers</div>
+                <div class="chip">Entrepreneurship</div>
+                <div class="chip">I am not sure yet</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GOALS -->
+        <section class="card">
+
+            <div class="section-title">Your Goals</div>
+
+            <div class="section-description">
+                What would you like to achieve or learn in the future?
+            </div>
+
+            <div class="input-group">
+                <label for="goals">Tell us about your goals</label>
+
+                <textarea id="goals"
+                    placeholder="For example: I want to discover careers, learn new skills, build projects, participate in competitions..."></textarea>
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT YOU -->
+        <section class="card">
+
+            <div class="section-title">Anything else you want us to know?</div>
+
+            <div class="section-description">
+                Share anything that may help ProSync understand you better.
+            </div>
+
+            <textarea id="about"
+                placeholder="Tell us anything else about your interests, dreams or things you would like to try..."></textarea>
+
+        </section>
+
+
+        <!-- CONTINUE -->
+        <div class="bottom-action">
+
+            <button class="continue-btn" onclick="continueProfile()">
+                Continue →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <div class="toast" id="toast"></div>
+
+
+    <script>
+
+        /* CHIP SELECTION */
+
+        const chips = document.querySelectorAll(".chip");
+
+        chips.forEach(chip => {
+
+            chip.addEventListener("click", () => {
+                chip.classList.toggle("selected");
+            });
+
+        });
+
+
+        /* CONTINUE */
+
+        function continueProfile() {
+
+            const name = document.getElementById("name").value.trim();
+
+            const selectedInterests =
+                document.querySelectorAll(
+                    '[data-group="interests"] .chip.selected'
+                );
+
+            if (name === "") {
+
+                showToast("Please enter your name.");
+
+                document.getElementById("name").focus();
+
+                return;
+            }
+
+            if (selectedInterests.length === 0) {
+
+                showToast("Please select at least one interest.");
+
+                return;
+            }
+
+            showToast("Profile saved successfully!");
+
+            /*
+              Prototype navigation.
+      
+              Later you can change this to:
+              window.location.href = "explore.html";
+            */
+
+            setTimeout(() => {
+
+                window.location.href = "explore.html";
+
+            }, 1200);
+
+        }
+
+
+        /* TOAST MESSAGE */
+
+        function showToast(message) {
+
+            const toast = document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.style.display = "block";
+
+            setTimeout(() => {
+
+                toast.style.display = "none";
+
+            }, 2500);
+
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>

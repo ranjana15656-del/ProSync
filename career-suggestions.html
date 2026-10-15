@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Career Suggestions | ProSync</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f6f8fc;
+      color: #172b4d;
+    }
+
+    .navbar {
+      height: 72px;
+      background: white;
+      border-bottom: 1px solid #e5e9f2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      background: #1769e0;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .step {
+      font-size: 14px;
+      color: #667085;
+      font-weight: 600;
+    }
+
+    .container {
+      width: 86%;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 0 35px;
+    }
+
+    .label {
+      display: inline-block;
+      background: #eaf2ff;
+      color: #1769e0;
+      padding: 7px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #667085;
+      font-size: 16px;
+    }
+
+    .banner {
+      background: #172b4d;
+      color: white;
+      border-radius: 16px;
+      padding: 22px 25px;
+      margin-bottom: 30px;
+    }
+
+    .banner strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .banner span {
+      color: #c8d3e3;
+      font-size: 14px;
+    }
+
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-bottom: 45px;
+    }
+
+    .career-card {
+      background: white;
+      border: 1px solid #e4e8f0;
+      border-radius: 17px;
+      padding: 25px;
+      transition: 0.2s;
+    }
+
+    .career-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(23, 43, 77, 0.09);
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .career-card h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .career-card p {
+      color: #667085;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .why {
+      background: #f5f8ff;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #475467;
+      margin-bottom: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background: #eef4ff;
+      color: #1769e0;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .explore-btn {
+      width: 100%;
+      border: none;
+      background: #1769e0;
+      color: white;
+      padding: 12px;
+      border-radius: 9px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .explore-btn:hover {
+      background: #1258bd;
+    }
+
+    .note {
+      text-align: center;
+      color: #667085;
+      font-size: 14px;
+      padding-bottom: 60px;
+    }
+
+    @media (max-width: 900px) {
+      .career-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .career-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .step {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+
+    <div class="brand">
+      <div class="logo">P</div>
+      ProSync
+    </div>
+
+    <div class="step">
+      AI Career Discovery · Step 4
+    </div>
+
+  </nav>
+
+
+  <main class="container">
+
+    <section class="hero">
+
+      <div class="label">
+        ✨ Personalized Career Exploration
+      </div>
+
+      <h1>
+        Explore careers that may fit your journey.
+      </h1>
+
+      <p>
+        Based on your interests, strengths and areas you explored,
+        here are some career possibilities to learn more about.
+      </p>
+
+    </section>
+
+
+    <div class="banner">
+
+      <strong>
+        🤖 Personalized for your profile
+      </strong>
+
+      <span>
+        These are possibilities to explore — not a final decision.
+      </span>
+
+    </div>
+
+
+    <section class="career-grid">
+
+
+      <!-- 1 -->
+      <div class="career-card">
+
+        <div class="icon">💻</div>
+
+        <h3>Software Developer</h3>
+
+        <p>
+          Build websites, applications and digital solutions
+          using technology and programming.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Problem solving, digital skills and curiosity.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Coding</span>
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Technology</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+
+      <!-- 2 -->
+      <div class="career-card">
+
+        <div class="icon">🎨</div>
+
+        <h3>UI/UX Designer</h3>
+
+        <p>
+          Design digital experiences that are useful,
+          accessible and enjoyable for people.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Creativity, design thinking and curiosity.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Design</span>
+          <span class="tag">Creativity</span>
+          <span class="tag">Research</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+
+      <!-- 3 -->
+      <div class="career-card">
+
+        <div class="icon">🏛️</div>
+
+        <h3>Architect</h3>
+
+        <p>
+          Plan and design buildings, spaces and environments
+          by combining creativity and technical knowledge.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Creativity, planning and visual thinking.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Design</span>
+          <span class="tag">Planning</span>
+          <span class="tag">Creativity</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+
+      <!-- 4 -->
+      <div class="career-card">
+
+        <div class="icon">🔬</div>
+
+        <h3>Research Scientist</h3>
+
+        <p>
+          Investigate questions, analyse evidence and contribute
+          to new scientific knowledge.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Curiosity, research and critical thinking.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Research</span>
+          <span class="tag">Science</span>
+          <span class="tag">Analysis</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+
+      <!-- 5 -->
+      <div class="career-card">
+
+        <div class="icon">📊</div>
+
+        <h3>Business Analyst</h3>
+
+        <p>
+          Understand problems, study information and help
+          organisations make informed decisions.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Problem solving, communication and analysis.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Analysis</span>
+          <span class="tag">Business</span>
+          <span class="tag">Communication</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+
+      <!-- 6 -->
+      <div class="career-card">
+
+        <div class="icon">🩺</div>
+
+        <h3>Healthcare Professional</h3>
+
+        <p>
+          Support people's health through healthcare,
+          science, treatment and patient care.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Helping people, science and responsibility.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Healthcare</span>
+          <span class="tag">Science</span>
+          <span class="tag">People</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+
+      <!-- 7 -->
+      <div class="career-card">
+
+        <div class="icon">⚖️</div>
+
+        <h3>Law Professional</h3>
+
+        <p>
+          Study laws, understand legal issues and help people
+          or organisations navigate legal matters.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Communication, reasoning and critical thinking.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Law</span>
+          <span class="tag">Reasoning</span>
+          <span class="tag">Communication</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+
+      <!-- 8 -->
+      <div class="career-card">
+
+        <div class="icon">🎬</div>
+
+        <h3>Animator & Media Creator</h3>
+
+        <p>
+          Create visual stories, animations, digital media
+          and creative content.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Creativity, storytelling and digital skills.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Animation</span>
+          <span class="tag">Media</span>
+          <span class="tag">Creativity</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+
+      <!-- 9 -->
+      <div class="career-card">
+
+        <div class="icon">🚀</div>
+
+        <h3>Entrepreneur</h3>
+
+        <p>
+          Develop ideas, solve problems and create new products,
+          services or organisations.
+        </p>
+
+        <div class="why">
+          <strong>Why this may fit you:</strong><br>
+          Creativity, leadership and initiative.
+        </div>
+
+        <div class="tags">
+          <span class="tag">Business</span>
+          <span class="tag">Leadership</span>
+          <span class="tag">Innovation</span>
+        </div>
+
+        <button class="explore-btn">
+          Explore Career →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <div class="note">
+      💡 Career suggestions are a starting point.
+      Explore different possibilities before making future decisions.
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const buttons = document.querySelectorAll(".explore-btn");
+
+    buttons.forEach(function(button) {
+
+      button.addEventListener("click", function() {
+
+        const card = button.closest(".career-card");
+
+        const career =
+          card.querySelector("h3").textContent.trim();
+
+        window.location.href =
+          "career-explorer.html?career=" +
+          encodeURIComponent(career);
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

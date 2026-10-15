@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProSync - Career Explorer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #14213d;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e6eaf0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            background: #1769ff;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .nav-text {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* MAIN */
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: 40px auto 70px;
+        }
+
+        /* HERO */
+        .career-hero {
+            background: linear-gradient(135deg, #14213d, #1c3765);
+            color: white;
+            border-radius: 20px;
+            padding: 38px;
+            margin-bottom: 30px;
+        }
+
+        .back {
+            display: inline-block;
+            color: #cbd5e1;
+            font-size: 13px;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .career-label {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .career-hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .career-hero p {
+            max-width: 720px;
+            color: #d7dfeb;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* GRID */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            margin-bottom: 16px;
+        }
+
+        .section-title h2 {
+            font-size: 23px;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* INFO GRID */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .info-card {
+            background: white;
+            border: 1px solid #e2e7ef;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 5px 18px rgba(20, 33, 61, 0.04);
+        }
+
+        .info-icon {
+            font-size: 24px;
+            margin-bottom: 13px;
+        }
+
+        .info-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* EDUCATION PATH */
+        .education-box {
+            background: white;
+            border: 1px solid #e2e7ef;
+            border-radius: 18px;
+            padding: 25px;
+        }
+
+        .education-path {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .edu-step {
+            flex: 1;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 13px;
+            padding: 18px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: #1769ff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .edu-step h3 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .edu-step p {
+            color: #667085;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .arrow {
+            display: flex;
+            align-items: center;
+            color: #98a2b3;
+            font-size: 18px;
+        }
+
+        /* SKILLS */
+        .skills {
+            background: white;
+            border: 1px solid #e2e7ef;
+            border-radius: 18px;
+            padding: 25px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .skill {
+            background: #edf4ff;
+            color: #1769ff;
+            border: 1px solid #d9e7ff;
+            padding: 9px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        /* SUBJECTS */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .subject {
+            background: white;
+            border: 1px solid #e2e7ef;
+            border-radius: 13px;
+            padding: 17px;
+            text-align: center;
+            font-size: 13px;
+            color: #475467;
+        }
+
+        /* FUTURE */
+        .future-box {
+            background: #eef5ff;
+            border: 1px solid #dbe8ff;
+            border-radius: 18px;
+            padding: 25px;
+        }
+
+        .future-list {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .future-item {
+            background: white;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #475467;
+            border: 1px solid #e3eaf5;
+        }
+
+        /* CTA */
+        .cta {
+            background: #14213d;
+            color: white;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta h2 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .cta p {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .cta button {
+            background: #1769ff;
+            border: none;
+            color: white;
+            padding: 13px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .cta button:hover {
+            background: #0f56d8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .education-path {
+                flex-direction: column;
+            }
+
+            .arrow {
+                justify-content: center;
+                transform: rotate(90deg);
+            }
+
+            .subject-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-text {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+                margin-top: 25px;
+            }
+
+            .career-hero {
+                padding: 27px;
+            }
+
+            .career-hero h1 {
+                font-size: 30px;
+            }
+
+            .info-grid,
+            .future-list,
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="brand">
+            <div class="logo">P</div>
+            ProSync
+        </div>
+
+        <div class="nav-text">
+            Career Explorer
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- CAREER HERO -->
+        <section class="career-hero">
+
+            <div class="back" onclick="goBack()">
+                ← Back to Career Suggestions
+            </div>
+
+            <div class="career-label">
+                🎯 Career Explorer
+            </div>
+
+            <h1 id="careerName">Software Developer</h1>
+
+            <p id="careerIntro">
+                Explore what this career involves, what you can study,
+                which skills can help you grow and what future pathways
+                you can consider.
+            </p>
+
+        </section>
+
+
+        <!-- WHAT IS THIS CAREER -->
+        <section class="section">
+
+            <div class="section-title">
+                <h2>What is this career?</h2>
+                <p>Understand the career before choosing a path.</p>
+            </div>
+
+            <div class="info-grid">
+
+                <div class="info-card">
+                    <div class="info-icon">💼</div>
+                    <h3>What people do</h3>
+                    <p>
+                        Professionals in this field use their knowledge and skills
+                        to create solutions, solve problems and work on real-world
+                        projects.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🌎</div>
+                    <h3>Where you can work</h3>
+                    <p>
+                        Depending on the field, opportunities may exist in companies,
+                        organisations, research institutions, startups or independent
+                        work.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🚀</div>
+                    <h3>Future possibilities</h3>
+                    <p>
+                        You can continue learning, specialise in an area, work on
+                        projects or explore advanced education in the future.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EDUCATION -->
+        <section class="section">
+
+            <div class="section-title">
+                <h2>🎓 Education Path</h2>
+                <p>
+                    A simple view of how your education journey could develop.
+                </p>
+            </div>
+
+            <div class="education-box">
+
+                <div class="education-path">
+
+                    <div class="edu-step">
+
+                        <div class="step-number">1</div>
+
+                        <h3>School</h3>
+
+                        <p>
+                            Build strong fundamentals and explore subjects connected
+                            to your interests.
+                        </p>
+
+                    </div>
+
+
+                    <div class="arrow">→</div>
+
+
+                    <div class="edu-step">
+
+                        <div class="step-number">2</div>
+
+                        <h3>Higher Secondary</h3>
+
+                        <p>
+                            Choose subjects and learning areas that support your
+                            future direction.
+                        </p>
+
+                    </div>
+
+
+                    <div class="arrow">→</div>
+
+
+                    <div class="edu-step">
+
+                        <div class="step-number">3</div>
+
+                        <h3>Degree / Course</h3>
+
+                        <p>
+                            Explore relevant degrees, diplomas or professional
+                            courses related to the career.
+                        </p>
+
+                    </div>
+
+
+                    <div class="arrow">→</div>
+
+
+                    <div class="edu-step">
+
+                        <div class="step-number">4</div>
+
+                        <h3>Skills & Projects</h3>
+
+                        <p>
+                            Build practical skills through projects, learning and
+                            real-world practice.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS -->
+        <section class="section">
+
+            <div class="section-title">
+                <h2>🧠 Skills You Can Build</h2>
+
+                <p>
+                    Skills can be developed gradually through learning and practice.
+                </p>
+            </div>
+
+            <div class="skills">
+
+                <div class="skill-list">
+
+                    <span class="skill">Problem Solving</span>
+                    <span class="skill">Communication</span>
+                    <span class="skill">Creativity</span>
+                    <span class="skill">Critical Thinking</span>
+                    <span class="skill">Teamwork</span>
+                    <span class="skill">Digital Skills</span>
+                    <span class="skill">Research</span>
+                    <span class="skill">Project Skills</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUBJECTS -->
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>📚 Subjects & Learning Areas</h2>
+
+                <p>
+                    Areas that can help you build a foundation for this career.
+                </p>
+
+            </div>
+
+            <div class="subject-grid">
+
+                <div class="subject">Mathematics</div>
+                <div class="subject">Science</div>
+                <div class="subject">Technology</div>
+                <div class="subject">Communication</div>
+                <div class="subject">Computer Skills</div>
+                <div class="subject">Research</div>
+                <div class="subject">Design Thinking</div>
+                <div class="subject">Project Work</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FUTURE PATHWAYS -->
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>🚀 Future Pathways</h2>
+
+                <p>
+                    Different directions you may explore as you learn more.
+                </p>
+
+            </div>
+
+            <div class="future-box">
+
+                <div class="future-list">
+
+                    <div class="future-item">
+                        🎯 Specialise in a specific area
+                    </div>
+
+                    <div class="future-item">
+                        🧪 Explore research and innovation
+                    </div>
+
+                    <div class="future-item">
+                        🚀 Build your own projects
+                    </div>
+
+                    <div class="future-item">
+                        🏢 Explore different industries
+                    </div>
+
+                    <div class="future-item">
+                        🎓 Continue with higher education
+                    </div>
+
+                    <div class="future-item">
+                        🌎 Explore global opportunities
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+        <section class="cta">
+
+            <h2>Ready to understand your skill gap?</h2>
+
+            <p>
+                Next, ProSync can compare the skills this career commonly involves
+                with the skills you are currently building.
+            </p>
+
+            <button onclick="continueNext()">
+                Explore My Skill Gap →
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        // Get selected career from URL
+        const params = new URLSearchParams(window.location.search);
+        const selectedCareer = params.get("career");
+
+        if (selectedCareer) {
+            document.getElementById("careerName").innerText = selectedCareer;
+
+            document.getElementById("careerIntro").innerText =
+                "Explore what " + selectedCareer +
+                " involves, what you can study, which skills can help you grow and what future pathways you can consider.";
+        }
+
+
+        function goBack() {
+            window.location.href = "career-suggestions.html";
+        }
+
+
+        function continueNext() {
+            const career = selectedCareer || "Software Developer";
+
+            window.location.href =
+                "skill-gap.html?career=" +
+                encodeURIComponent(career);
+        }
+
+    </script>
+    <script src="prosync.js"></script>
+
+</body>
+
+</html>
